@@ -1,5 +1,4 @@
 import subprocess
-import threading
 import wave
 import websocket
 import datetime
@@ -13,8 +12,7 @@ import ssl
 from wsgiref.handlers import format_date_time
 from datetime import datetime
 from time import mktime
-# import _thread as thread
-import threading
+import _thread as thread
 import os
 import sys
 
@@ -23,6 +21,7 @@ from pydub import AudioSegment
 
 import rospy
 import pypinyin
+
 # from voice_pkg.srv import VoiceSrv, VoiceSrvResponse
 
 STATUS_FIRST_FRAME = 0  # 第一帧的标识
@@ -30,7 +29,7 @@ STATUS_CONTINUE_FRAME = 1  # 中间帧标识
 STATUS_LAST_FRAME = 2  # 最后一帧的标识
 
 playstate = 'stop'
-savepath = '/home/hit/RX/voice_pkg/temp_record/play.wav'
+savepath = '/home/robot/catkin_dt/src/voice_pkg/temp_record/play.wav'
 
 class Ws_Param(object):
     # 初始化
@@ -86,7 +85,6 @@ class Ws_Param(object):
 
 def get_tts(textinput, savepath):
     def on_message(ws, message):
-        global iflast_global
         try:
             # print(message)
             message = json.loads(message)
@@ -109,7 +107,7 @@ def get_tts(textinput, savepath):
                 # print(len(wsParam.allaudio))
                 iflast = result['last']
             if iflast:
-                # print("ws is closed")
+                print("ws is closed")
                 # Save the recorded data as a WAV file
                 wf = wave.open(savepath, 'wb')
                 wf.setnchannels(1)
@@ -117,7 +115,6 @@ def get_tts(textinput, savepath):
                 wf.setframerate(16000)
                 wf.writeframes(wsParam.allaudio)
                 wf.close()
-                iflast_global = iflast
                 ws.close()
 
         except Exception as e:
@@ -132,7 +129,7 @@ def get_tts(textinput, savepath):
 
     # 收到websocket关闭的处理
     def on_close(ws,a,b):
-        print("### ws closed ###", datetime.now())
+        print("### closed ###", datetime.now())
 
 
     # 收到websocket连接建立的处理
@@ -167,12 +164,11 @@ def get_tts(textinput, savepath):
             if os.path.exists(savepath):
                 os.remove(savepath)
 
-        # thread.start_new_thread(run, ())
-        t = threading.Thread(target=run, args=())
-        t.start()
+        thread.start_new_thread(run, ())
+
     
     # 测试时候在此处正确填写相关信息即可运行
-    with open('/home/hit/RX/voice_pkg/scripts/config_dt.json', 'r') as fj:
+    with open('/home/robot/catkin_dt/config_dt.json', 'r') as fj:
         config = json.load(fj)
     APPID, APISecret, APIKey = config['kedaxunfei_appid'], config['kedaxunfei_apiSecret'], config['kedaxunfei_appkey']
     wsParam = Ws_Param(APPID=APPID, APISecret=APISecret,
@@ -198,7 +194,7 @@ def tts_playsound(input, index=1000):
         playstate = 'stop'
 
     # print('text = ', input)
-    with open('/home/hit/RX/voice_pkg/temp_record/text2speech/qige.json', 'r+', encoding='utf-8') as fj:
+    with open('/home/robot/catkin_dt/src/voice_pkg/temp_record/text2speech/qige.json', 'r+', encoding='utf-8') as fj:
         jsondata = json.load(fj)
         if text in jsondata:
             # print('already has')
@@ -207,7 +203,7 @@ def tts_playsound(input, index=1000):
             # print('not file exist')
             pinyin_text = pypinyin.pinyin(text, style=pypinyin.NORMAL)
             pinyin_text = '_'.join([i[0] for i in pinyin_text])
-            savepath = os.path.join('/home/hit/RX/voice_pkg/temp_record/text2speech', pinyin_text+'.wav')
+            savepath = os.path.join('/home/robot/catkin_dt/src/voice_pkg/temp_record/text2speech', pinyin_text+'.wav')
             # print(savepath)
             get_tts(savepath, input)
 
@@ -225,12 +221,11 @@ def tts_playsound(input, index=1000):
     # 异步播放:
     # if lastproc:
     #     lastproc.wait()
-    # lastproc = subprocess.Popen(["python3", "/home/kuavo/catkin_dt/src/voice_pkg/scripts/playsound.py"])
+    # lastproc = subprocess.Popen(["python3", "/home/robot/catkin_dt/src/voice_pkg/scripts/playsound.py"])
     while 1:
         if playstate == 'stop':
-            # thread.start_new_thread(playsound_work, (savepath,))
-            t = threading.Thread(target=playsound_work, args=(savepath))
-            t.start()
+            thread.start_new_thread(playsound_work, (savepath,))
+
             # 等待的时间必不可少，因为会有playsound和tts的读写同一个文件的冲突，因此先playsound再让tts访问 play.wav
             time.sleep(0.15)
 
@@ -240,30 +235,43 @@ def tts_playsound(input, index=1000):
     # return VoiceSrvResponse('tts is over')
     return 'tts is over'
 
-from pydub.playback import play
-from pydub import AudioSegment
+lastproc = None
 
-def playsound_work(savepath):
-    play(AudioSegment.from_mp3(savepath))
-  
 if __name__ == "__main__":
-    iflast_global = False
     text = sys.argv[1]
-    # text = "你好你好"
+    # text = "中科院长光所是一个研究所"
     savepath = sys.argv[2]
-    # savepath = '/home/kuavo/catkin_dt/src/voice_pkg/scripts/kedaxunfei_tts/test_wav.wav'
-    with open('/home/hit/RX/voice_pkg/scripts/kedaxunfei_tts/duoyin.json', 'r+', encoding='utf-8') as fj:
+    # savepath = '/home/robot/catkin_dt/src/voice_pkg/scripts/kedaxunfei_tts/test_wav.wav'
+    with open('/home/robot/catkin_dt/src/voice_pkg/scripts/kedaxunfei_tts/duoyin.json', 'r+', encoding='utf-8') as fj:
         jsondata = json.load(fj)
     a = list(jsondata.keys())
     for k, v in jsondata.items():
       if k in text:
         text = text.replace(k, jsondata[k])
     # print(text)
-    thread_tts = threading.Thread(target=get_tts, args=(text, savepath,))
-    thread_tts.start()
-    while not iflast_global:
-        continue
-    print("### 语音合成结束 ###", datetime.now())
-    # print('who first!!', datetime.now())
-    # playsound_work(savepath)
+    
+    get_tts(text, savepath)
+    # text = '這是一個很長的文本很長很長的'
+    # savepath = '/home/robot/catkin_dt/src/voice_pkg/scripts/kedaxunfei_tts/testtest.wav'
+    # time1 = datetime.now()
+    # get_tts(text, savepath)
+    # time2 = datetime.now()
+    # print(time2 - time1)
+
+    # a = {
+    #     "sessionParams":{
+    #         "traceId":"tur1715748522354",
+    #         "reset":True,
+    #         "id":"tur1715748522354",
+    #         "abilityList":[{
+    #             "param":"{\"volume\":5,\"native_voice_name\":\"yezi\",\"sample_rate\":\"16000\",\"audio_coding\":\"raw\",\"endFlag\":\"true\",\"pitch\":50,\"speed\":50}",
+    #             "abilityCode":"tts",
+    #             "serviceName":"tts"}]
+    #         },
+    #         "debug":True,
+    #         "data":"5L2g5aW95ZGA",
+    #         "appid":"ef014ded",
+    #         "firstAi":"tts",
+    #         "scene":"main_box"
+    #     }
 

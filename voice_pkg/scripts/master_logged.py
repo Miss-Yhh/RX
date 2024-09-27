@@ -16,11 +16,11 @@ import pypinyin
 
 # from kedaxunfei_iat.iat_as_service_iter import iat_web_api  # 
 # from kedaxunfei_iat.iat_as_service import iat_web_api
-# from kedaxunfei_iat.test_webapi_iat_stream import iat_web_api  # 科大讯飞公有云
+from kedaxunfei_iat.test_webapi_iat_stream import iat_web_api  # 科大讯飞公有云
 # from kedaxunfei_iat.test_host_3090_iat import iat_web_api  # 科大讯飞私有云-没有流式
 # from kedaxunfei_iat.test_host_3090_iat_stream import iat_web_api  # 科大讯飞私有云-流式
 # from tencentclound.tencentclound import iat_tencent as iat_web_api
-from test_host_3090_iat import iat_web_api, kedaxunfei_iat_service
+#from test_host_3090_iat import iat_web_api, kedaxunfei_iat_service
 import rospy
 from std_msgs.msg import String, Bool
 from geometry_msgs.msg import Twist
