@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 from GlobalValues import GV
 gv = GV()
+print('hhhh')
+print(gv.SERVER_TYPE)
 if gv.SERVER_TYPE == '3090':
     from test_host_3090_iat import iat_web_api, kedaxunfei_iat_service
     from test_host_3090_tts import get_tts

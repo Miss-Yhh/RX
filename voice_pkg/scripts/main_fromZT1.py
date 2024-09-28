@@ -14,7 +14,7 @@ from datetime import datetime
 from typing import Dict, List, Tuple, Optional
 import pypinyin
 from mic_ctl import record
-from utils import play_sound
+from utils import play_sound,get_mic_from_audio
 from test_host_3090_iat import iat_web_api, kedaxunfei_iat_service
 from test_host_3090_tts import get_tts
 from iat import run_iat
@@ -44,7 +44,7 @@ def text2speech(text='', index=0, is_beep=False, wavfile=None, ignore_interrupt=
 
     savepath = os.path.join('/home/hit/RX/voice_pkg/temp_record/text2speech', str(time.time())+'.wav')
     if not wavfile:
-        print('not wavfile')
+        #print('not wavfile')
         tts_process = Process(target=get_tts, args=(text, savepath))
 
         # 启动新进程
@@ -53,7 +53,7 @@ def text2speech(text='', index=0, is_beep=False, wavfile=None, ignore_interrupt=
         # 等待进程结束（可选）
         tts_process.join()
 
-        print("TTS processing complete.")
+        #print("TTS processing complete.")
         #get_tts(/home/hit/RX/tts.py,text, savepath)
         #ttsproc = subprocess.Popen(["python3", "/home/hit/RX/voice_pkg/scripts/test_host_3090_tts.py", text, savepath])
         # ttsproc = subprocess.Popen(["python3", "/home/hit/RX/tts.py", text, savepath])
@@ -65,9 +65,9 @@ def text2speech(text='', index=0, is_beep=False, wavfile=None, ignore_interrupt=
         #         #print('被打断')
         #         break
             
-    while STATUS.Last_Play_Processor and STATUS.Last_Play_Processor.poll() is None:
+    while STATUS.Last_Play_Processor and STATUS.Last_Play_Processor.is_alive is True:
         if STATUS.is_Interrupted:
-            print('播音被打断')
+            #print('播音被打断')
             STATUS.Last_Play_Processor.kill()
             if not ignore_interrupt:
                 return None
@@ -79,30 +79,28 @@ def text2speech(text='', index=0, is_beep=False, wavfile=None, ignore_interrupt=
             return None
         
     if text:  
-        print(text)
+        #print(text)
         if is_beep:
-            print(1)
+            #print(1)
             STATUS.set_LAST_BROAD_WORDS(STATUS.LAST_BROAD_WORDS + text)
         else:
-            print(2)
+            #print(2)
             STATUS.set_LAST_BROAD_WORDS(text)
     
     print(f"正在播音...({text})")
     if wavfile:
       savepath = wavfile
-    print('hh')
     savepath_louder = savepath.replace('.wav', 'louder.wav')
-    print('hhhh')
     cmd = f"ffmpeg -loglevel quiet -i {savepath} -acodec pcm_s16le -ac 1 -ar 16000 -filter:a \"volume={STATUS.SOUND_CHANGE}dB\" -y {savepath_louder}"
     _ = os.system(cmd)
-    print('hhh')
     if STATUS.card_id == -1:        
         #tts_process = Process(target=get_tts, args=(text, savepath))
         print(1)
         playproc = Process(target=play_sound, args=(savepath,))
         # 启动新进程
         playproc.start()
-        #playproc.join()
+        playproc.join()
+        print(playproc.is_alive())
 
         print(1)
         #playproc = subprocess.Popen(["python3", "/home/hit/RX/voice_pkg/scripts/kedaxunfei_tts/play_sound.py", savepath_louder])
@@ -110,26 +108,36 @@ def text2speech(text='', index=0, is_beep=False, wavfile=None, ignore_interrupt=
       playproc = subprocess.Popen(["aplay", "-D", f"plughw:{STATUS.card_id},0", f'{savepath_louder}'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     
     if index == 1000: 
-        print(10)
-        while playproc.is_alive:
-            print(20)
+        while playproc.is_alive():
             if STATUS.is_Interrupted and not ignore_interrupt:
                 
                 playproc.terminate()  # 强制终止子进程
                 #playproc.kill()
                 return
-        print(30) 
         STATUS.set_Last_Play_Processor(None)
     else:
         STATUS.set_Last_Play_Processor(playproc)
         time.sleep(0.15)
 
-    print('tts is over')
     return 'tts is over'
 
 def listenuser(text='ding', iter=1):
     if STATUS.SOUND_INPUT_EXIST:
-        userword = iat_web_api(text, iter=iter, environment_name='DJI_sitting_at_desk', card=STATUS.card_id)
+        record_start_beep=True
+        record_nothing_beep=True
+        record_indes=time.time()
+        #get_mic_from_audio(f"/home/hit/RX/temp_record/record_{record_index}.mp3")
+
+        record(record_start_beep, f"/home/hit/RX/temp_record/record_{record_index}.mp3", record_nothing_beep)
+        
+
+        #record(record_start_beep, f"./temp_record/record_{record_index}.mp3", record_nothing_beep)
+        #'/home/hit/RX/voice_pkg/temp_record/text2speech', str(time.time())+'.wav'
+        #thread.start_new_thread(play_sound, ("./save_waves/record_over.mp3",))
+        #time.sleep(0.8)
+
+        userword = run_iat(f"/home/hit/RX/temp_record/record_{record_index}.mp3")
+        #userword = run_iat(text, iter=iter, environment_name='DJI_sitting_at_desk', card=STATUS.card_id)
     else:
         userword = input("请输入：")
     return userword
@@ -141,18 +149,19 @@ def pardon(pardon_round=1):#参数：迭代次数为1
     while True:#进入无限循环，直到成功获取用户语音输入或者满足退出条件
         userword = listenuser('ding', iter=pardon_round)
         if userword and userword != '####':#有效输入：退出
+            print(userword)
             break
         elif userword == '####' or repeat_count < 1:
         #没能成功识别用户语音，并且系统还没有重复提示过用户
-            print('大家现在可以向我提问', datetime.now())
-            text2speech("大家现在可以向我提问", index=1000, is_beep=True, wavfile='/home/kuavo/catkin_dt/src/voice_pkg/scripts/kedaxunfei_tts/canaskme.wav')
+            #print('大家现在可以向我提问', datetime.now())
+            text2speech("大家现在可以向我提问", index=1000, is_beep=True, wavfile='/home/hit/RX/voice_pkg/scripts/kedaxunfei_tts/canaskme.wav')
             repeat_count += 1
         else:#次数上限，并且未能获取有效输入
             STATUS.set_is_QAing(False)#表示不再处于问答状态
             while True:#进入另一个循环，直到检测到打断信号
                 if STATUS.is_Interrupted:  
                     STATUS.set_is_Interrupted(False)
-                    text2speech("大家现在可以向我提问", index=1000, is_beep=True, ignore_interrupt=True, wavfile='/home/kuavo/catkin_dt/src/voice_pkg/scripts/kedaxunfei_tts/canaskme.wav')
+                    text2speech("大家现在可以向我提问", index=1000, is_beep=True, ignore_interrupt=True, wavfile='/home/hit/RX/voice_pkg/scripts/kedaxunfei_tts/canaskme.wav')
                     break
         STATUS.set_is_QAing(True)#设置问答状态
         STATUS.set_is_Interrupted(False)#重置打断状态
@@ -220,7 +229,7 @@ class InterruptClass:
         clear = True # 是否清楚展品名称、是否正确理解了用户的问题
         while True:
             # 一直进行问答，直到task不是QA，转而进行其他操作
-            while "问答意图" in task:
+            while "动作" not in task:
                 sleep(0.05)
                   
                 if clear and self.qa_class.interrupt_stream:#问答流正常
@@ -232,20 +241,16 @@ class InterruptClass:
                     print("In InterruptClass.handle_interrupt 接下来使用text2speech播音“大家有什么问题吗？”")
                 
                     if 'InterruptClass' in name:
-                        print(1)
-                        text2speech('哈哈哈哈哈大家有什么问题吗？', index=1000, is_beep=True, wavfile=None, ignore_interrupt=True) # 提示用户说出问题
+                        text2speech('大家有什么问题吗？', index=1000, is_beep=True, wavfile=None, ignore_interrupt=True) # 提示用户说出问题
                     else:
-                        print(2)
                         print(f"播放我在之前STATUS.is_Interrupted:{STATUS.is_Interrupted}")
                         text2speech('我在', index=0, is_beep=True, wavfile=iamhere, ignore_interrupt=True) # 提示用户说出问题
                 
-                print(5)
                 STATUS.set_is_Interrupted(False)#表示目前没有新的打断状态
                     
                 self.qa_class.interrupt_stream = True#问答流可以正常进行
-                print(3)
+
                 question = pardon() # 录制用户的指令
-                print(4)
                 # print(f"\n用户指令: {question}\n")
                 
                 # 使用任务分类大模型
@@ -255,9 +260,7 @@ class InterruptClass:
                 #task = task_class_result_replace(task_result)#替换当前的task
                 #record_task_classification(question, task)#记录下来
                 print('------task 任务判断结束时间=', datetime.now())
-                    
-
-                if task == '问答意图':
+                if "动作" not in task:
                     if clear: # 如果清楚展品名称，就直接回答
                         STATUS.set_is_QAing(False) # 防止问答被打断 - 结束
 
@@ -266,7 +269,8 @@ class InterruptClass:
                     else:
                         text2speech('大家还有其他问题吗？', index=1000, is_beep=True)
 
-            if task != '问答意图':
+
+            if '动作' in task:
                 STATUS.set_is_QAing(False) # 防止问答被打断 - 结束
                 cnt = 20
                 while cnt>0:
@@ -323,14 +327,14 @@ class QAClass():
     
     def answer_question(self, user_words: str) -> str:
         #问答模型初始化
-        elf.qaclass_thread.join()
+        self.qaclass_thread.join()
         self.interrupt_stream = False
 
         #随机选择一个过渡词然后播放
         guodus = ['好', '好的']
         choice = random.randint(0, len(guodus) - 1)
         text = guodus[choice]
-        wavfile = f'/home/kuavo/catkin_dt/src/voice_pkg/scripts/kedaxunfei_tts/{text}.wav'
+        wavfile = f'/home/hit/RX/voice_pkg/scripts/kedaxunfei_tts/{text}.wav'
         text2speech(text=text, index=0, wavfile=wavfile)
 
         if STATUS.STREAM_RETURN:#使用流式返回
@@ -338,7 +342,7 @@ class QAClass():
             splitters = [',', ';', '.', '!', '?', ':', '，', '。', '！', "'", '；', '？', '：', '/', '\n']
             numbers = [str(c) for c in range(10)]  # 数字字符列表
             buffer = ""
-            if_anaphora=false
+            if_anaphora=False
 
             #调用 self.llmclass.process_query() 来处理用户问题 user_words，
             #并获取流式返回的每个 qa_answer 片段。
@@ -346,7 +350,7 @@ class QAClass():
             for qa_answer in stream_qa(user_words):
                 if STATUS.is_Interrupted:#如果系统被打断
                     #记录问题和已经生成的部分回答
-                    record_question_answer(self.llmclass.old_question, self.llmclass.old_complete_answer, user_words, self.complete_answer)
+                    # record_question_answer(self.llmclass.old_question, self.llmclass.old_complete_answer, user_words, self.complete_answer)
                     self.complete_answer = ""
                     self.interrupt_stream = True
                     break
@@ -369,14 +373,15 @@ class QAClass():
                     text2speech("？", index=1000)
                   
                 #记录完整的问答过程
-                record_question_answer(self.llmclass.old_question, self.llmclass.old_complete_answer, user_words, self.complete_answer)
+                #record_question_answer(self.llmclass.old_question, self.llmclass.old_complete_answer, user_words, self.complete_answer)
                 self.complete_answer = ""
             
         else:#非流式返回的处理
+            print('非流式返回')
             #直接获取完整的回答
             # qa_answer = self.llmclass.process_query(user_words, if_anaphora=if_anaphora, exhibition=STATUS.Current_Area, extra_information=STATUS.EXTRA_INFORMATION.get(STATUS.Current_Area, ""), commentary_speech=STATUS.COMMENTARY_SPEECH)
             qa_answer=stream_qa(user_words)
-            record_question_answer(self.llmclass.old_question, self.llmclass.old_complete_answer, user_words, qa_answer)
+            #record_question_answer(self.llmclass.old_question, self.llmclass.old_complete_answer, user_words, qa_answer)
             #记录下来然后一次性播放
             text2speech(qa_answer, index=1000)
 
@@ -411,9 +416,7 @@ class MainClass:
             print('mic set error')
 
         self.qa_class = QAClass()#实例化问答类
-        print(1)
         self.start = InterruptClass(self.qa_class)#实例化打断处理类
-        print(1)
         # rospy.init_node('interrupt', anonymous=False)
         # # # 初始化 ROS 节点，节点名为 'interrupt'，anonymous=False 表示不使用匿名名称。
         # print(1)
@@ -442,13 +445,11 @@ class MainClass:
             #thread.start_new_thread(play_sound, ("/home/hit/RX/save_waves/record_over.mp3",))
             print('好的我听见了')
             #time.sleep(0.8)
-            print(1)
 
             #get_iat_server(f"/home/hit/RX/temp_record/record_{record_index}.mp3", 3090)
             #query = kedaxunfei_iat_service(f"/home/hit/RX/temp_record/record_{record_index}.mp3")
             
             query = run_iat(f"/home/hit/RX/temp_record/record_{record_index}.mp3")
-            print(1)
             print(f"\033[33m识别结果: {query}\033[0m")
 
 
@@ -471,7 +472,7 @@ class MainClass:
                     break
             
 
-    def get_iat_server(wav_path:str,server_type:str):
+    def ru(wav_path:str,server_type:str):
         if server_type == '3090':
             # query = iat_web_api(f"./temp_record/record_{record_index}.mp3")
             query = kedaxunfei_iat_service(f"./temp_record/record_{record_index}.mp3")
