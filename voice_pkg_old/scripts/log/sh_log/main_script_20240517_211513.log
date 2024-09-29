@@ -1,0 +1,117 @@
+[0;36mStarting Roscore...[0m
+Roscore is already running.
+[0;36mStarting Voice Microphone...[0m
+mic_appIDfe7065eb
+mic_apiKeye6410e10f9ac4169cae3a7a1c795961d
+mic_apiSecretNTg3NDhkMDY2MGE2ZjQ0Nzk1NzY3MDVh
+2024-05-17:21:15:15.129 Tx022135 [32mINFO[0m AEE_Init                        194 workDir is ./
+2024-05-17:21:15:15.129 Tx022135 [32mINFO[0m AEE_Init                        199 licenseFile path is 
+2024-05-17:21:15:15.130 Tx022135 [32mINFO[0m AEE_Init                        200 authBatch is (null)
+2024-05-17:21:15:15.130 Tx022135 [32mINFO[0m AEE_Init                        201 userdefined device id is (null)
+2024-05-17:21:15:15.130 Tx022135 [32mINFO[0m AEE_Init                        202 sdk mode: net mode
+2024-05-17:21:15:15.130 Tx022135 [35mCRIT[0m init                            987 framework version is 2.2.15_rc1
+2024-05-17:21:15:15.130 Tx022135 [35mCRIT[0m init                            989 appid is fe7065eb
+2024-05-17:21:15:15.130 Tx022135 [35mCRIT[0m init                            994 auth type is 0,platform is 4, arch is 4
+2024-05-17:21:15:15.130 Tx02215F [32mINFO[0m WCMainLoop                     2039 succeed to start WCMainLoop.
+2024-05-17:21:15:15.130 Tx022135 [32mINFO[0m setCustomDeviceIDPartWeight     941 use default device id part weight
+2024-05-17:21:15:15.132 Tx022135 [32mINFO[0m getDeviceLevel                 1798 cached device level 2
+2024-05-17:21:15:15.132 Tx022135 [35mCRIT[0m init                           1048 device security level is 2
+2024-05-17:21:15:15.132 Tx022135 [32mINFO[0m init                           1051 auth mode: compete auth, registed abilities: e867a88f2;
+2024-05-17:21:15:15.133 Tx022135 [32mINFO[0m getDeviceId                     850 PARTA:36,PARTD:0
+2024-05-17:21:15:15.133 Tx022135 [32mINFO[0m getDeviceId                     868 PARTB:1 is 48:21:0b:60:8a:d8
+2024-05-17:21:15:15.150 Tx022135 [32mINFO[0m getDeviceId                     874 PARTC:1 
+2024-05-17:21:15:15.150 Tx022135 [35mCRIT[0m checkDeviceChanged              756 cached device is c887604519435269749c520361c6dc24bd98f9e7ac8be2d19adaf0cb80195552fecd8caebd841f49620cdbc982113147a1da699f25e7d1d29b4a07208557f4a4fe52d8a51bff08875f20db06a58b4d3d
+2024-05-17:21:15:15.151 Tx022135 [35mCRIT[0m storeDevice                    1778 start store device c887604519435269749c520361c6dc24bd98f9e7ac8be2d19adaf0cb80195552fecd8caebd841f49620cdbc982113147a1da699f25e7d1d29b4a07208557f4a4fe52d8a51bff08875f20db06a58b4d3d
+2024-05-17:21:15:15.151 Tx022135 [32mINFO[0m setKey                          110 store 8457,8457 device success
+2024-05-17:21:15:15.151 Tx022135 [32mINFO[0m localAuthStorageCheck          1260 start cached license check
+2024-05-17:21:15:15.152 Tx022135 [32mINFO[0m formatV2                        445 ValidLen:4026,PayLen:3470,SigLen:512,SchemaLen:2138,RelationLen:36,LicenseLen:1290,ConfigLen:0
+2024-05-17:21:15:15.153 Tx022135 [32mINFO[0m init                            645 parser init ret:0
+2024-05-17:21:15:15.153 Tx022135 [32mINFO[0m generalCheck                    907 protocol general check ret:0
+2024-05-17:21:15:15.153 Tx022135 [32mINFO[0m localAuthStorageCheck          1279 start update local timestamp
+2024-05-17:21:15:15.159 Tx022135 [32mINFO[0m setKey                          110 store 8457,8457 license success
+2024-05-17:21:15:15.159 Tx022135 [32mINFO[0m localAuthStorageCheck          1287 local cached license check ret:0
+2024-05-17:21:15:15.159 Tx022135 [32mINFO[0m softAuthActivate                883 local cached license parse succeed
+2024-05-17:21:15:15.159 Tx022166 [32mINFO[0m authFileUpdateMain              474 async check thread start
+2024-05-17:21:15:15.160 Tx022135 [35mCRIT[0m AEE_Init                        287 AEE_Init ret 0, cost 31.289398 ms
+2024-05-17:21:15:15.160 Tx022135 [32mINFO[0m loadEngine                      220 loading engine: ef7d69542, versionIdx: 0, libname: ef7d69542_v1009_aee.so
+2024-05-17:21:15:15.161 Tx022135 [32mINFO[0m formatV2                        445 ValidLen:4026,PayLen:3470,SigLen:512,SchemaLen:2138,RelationLen:36,LicenseLen:1290,ConfigLen:0
+2024-05-17:21:15:15.161 Tx022135 [32mINFO[0m init                            645 parser init ret:0
+2024-05-17:21:15:15.162 Tx022135 [35mCRIT[0m AEE_EngineInit                  346 AEE_E[33m[ WARN] [1715951715.191494492]: Shutdown request received.[0m
+[33m[ WARN] [1715951715.193765702]: Reason given for shutdown: [[/ivw_node] Reason: new node registered with same name][0m
+ngineInit:e867a88f2 ret 0
+AIKIT_LoadData start!
+2024-05-17:21:15:15.162 Tx022135 [32mINFO[0m init                             65 ability:e867a88f2 init success
+2024-05-17:21:15:15.169 Tx022135 [33mWARN[0m getResourceFilePath             408 can't find full-matched resource, resource:IVW_KEYWORD_1, version:1.0.1, use partial-matched path: ./src/voice_pkg/src/kedaxunfei_ivw/resource/IVW_KEYWORD_1
+2024-05-17:21:15:15.170 Tx022135 [32mINFO[0m loadCommonResource               94 load resource:IVW_KEYWORD_1, id:0, version:1.0.1, path:./src/voice_pkg/src/kedaxunfei_ivw/resource/IVW_KEYWORD_1
+2024-05-17:21:15:15.170 Tx022135 [32mINFO[0m formatV2                        445 ValidLen:4026,PayLen:3470,SigLen:512,SchemaLen:2138,RelationLen:36,LicenseLen:1290,ConfigLen:0
+2024-05-17:21:15:15.170 Tx022135 [32mINFO[0m init                            645 parser init ret:0
+2024-05-17:21:15:15.175 Tx022135 [33mWARN[0m getResourceFilePath             408 can't find full-matched resource, resource:IVW_MLP_1, version:1.0.2, use partial-matched path: ./src/voice_pkg/src/kedaxunfei_ivw/resource/IVW_MLP_1
+2024-05-17:21:15:15.175 Tx022135 [32mINFO[0m loadCommonResource               94 load resource:IVW_MLP_1, id:1, version:1.0.2, path:./src/voice_pkg/src/kedaxunfei_ivw/resource/IVW_MLP_1
+2024-05-17:21:15:15.175 Tx022135 [32mINFO[0m formatV2                        445 ValidLen:4026,PayLen:3470,SigLen:512,SchemaLen:2138,RelationLen:36,LicenseLen:1290,ConfigLen:0
+2024-05-17:21:15:15.176 Tx022135 [32mINFO[0m init                            645 parser init ret:0
+2024-05-17:21:15:15.185 Tx022166 [32mINFO[0m startOnlineAuthRequest         1296 start async online license activate
+2024-05-17:21:15:15.188 Tx022135 [33mWARN[0m getResourceFilePath             408 can't find full-matched resource, resource:IVW_FILLER_1, version:1.0.2, use partial-matched path: ./src/voice_pkg/src/kedaxunfei_ivw/resource/IVW_FILLER_1
+2024-05-17:21:15:15.188 Tx022135 [32mINFO[0m loadCommonResource               94 load resource:IVW_FILLER_1, id:2, version:1.0.2, path:./src/voice_pkg/src/kedaxunfei_ivw/resource/IVW_FILLER_1
+2024-05-17:21:15:15.188 Tx022135 [32mINFO[0m formatV2                        445 ValidLen:4026,PayLen:3470,SigLen:512,SchemaLen:2138,RelationLen:36,LicenseLen:1290,ConfigLen:0
+2024-05-17:21:15:15.188 Tx022135 [32mINFO[0m init                            645 parser init ret:0
+2024-05-17:21:15:15.192 Tx022135 [35mCRIT[0m AEE_LoadData                    496 AEE_LoadData:e867a88f2 ret 0
+AIKIT_LoadData end!
+AIKIT_LoadData:0
+2024-05-17:21:15:15.192 Tx022135 [35mCRIT[0m AEE_SpecifyDataSet              723 AEE_SpecifyDataSet:e867a88f2 ret 0
+AIKIT_SpecifyDataSet:0
+2024-05-17:21:15:15.192 Tx022135 [32mINFO[0m AEE_Start                       764 start a new session , type is 4
+2024-05-17:21:15:15.198 Tx022135 [33mWARN[0m getResourceFilePath             408 can't find full-matched resource, resource:IVW_GRAM_1, version:1.0.2, use partial-matched path: ./src/voice_pkg/src/kedaxunfei_ivw/resource/IVW_GRAM_1
+2024-05-17:21:15:15.198 Tx022135 [32mINFO[0m loadParamResource               146 size:1 load resource:./src/voice_pkg/src/kedaxunfei_ivw/resource/IVW_GRAM_1, version: 1.0.2, id is 3
+2024-05-17:21:15:15.198 Tx022135 [32mINFO[0m formatV2                        445 ValidLen:4026,PayLen:3470,SigLen:512,SchemaLen:2138,RelationLen:36,LicenseLen:1290,ConfigLen:0
+2024-05-17:21:15:15.199 Tx022135 [32mINFO[0m init                            645 parser init ret:0
+2024-05-17:21:15:15.209 Tx022166 [32mINFO[0m resolveHost                     454 dns mode:0
+2024-05-17:21:15:15.209 Tx022166 [33mWARN[0m getNameServerResult             308 cannot find "xns.xf-yun.com"'s IP, ipList is empty
+2024-05-17:21:15:15.245 Tx022135 [32mINFO[0m loadParamResource               155 resource ./src/voice_pkg/src/kedaxunfei_ivw/resource/IVW_GRAM_1 was loaded!
+2024-05-17:21:15:15.245 Tx022135 [32mINFO[0m start                           223 Session start:0 e867a88f2 this:0x555daf171838
+AIKIT_Start:0
+2024-05-17:21:15:15.268 Tx022166 [32mINFO[0m getNameServerResult             309 dns resolve xns.xf-yun.com as [101.200.180.128]
+2024-05-17:21:15:15.277 Tx022166 [33mWARN[0m httpCallback                    500 wsi:0x7f016c007868 conn ptr is NULL,ignore this reason:21
+2024-05-17:21:15:15.277 Tx022166 [32mINFO[0m LWSContext                      111 create:2 context ok! Context:0x7f016c005ad0 ops:0x7f016c0030f0
+2024-05-17:21:15:15.277 Tx022177 [33mWARN[0m httpCallback                    500 wsi:0x7f0179e31760 conn ptr is NULL,ignore this reason:27
+2024-05-17:21:15:15.277 Tx022177 [33mWARN[0m httpCallback                    500 wsi:0x7f016c007868 conn ptr is NULL,ignore this reason:71
+2024-05-17:21:15:15.277 Tx022177 [33mWARN[0m httpCallback                    500 wsi:0x7f016c007868 conn ptr is NULL,ignore this reason:71
+2024-05-17:21:15:15.277 Tx022177 [33mWARN[0m httpCallback                    500 wsi:0x7f016c007868 conn ptr is NULL,ignore this reason:71
+2024-05-17:21:15:15.377 Tx022177 [33mWARN[0m httpCallback                    500 wsi:0x7f017c001480 conn ptr is NULL,ignore this reason:85
+2024-05-17:21:15:15.439 Tx022166 [33mWARN[0m parseResultToAddressList        723 [cn-huabei-1-lg.xf-yun.com] IP list is empty!
+Listening...
+2024-05-17:21:15:15.466 Tx022135 [32mINFO[0m end                             359 Session end:0 e867a88f2 this:0x555daf171838
+2024-05-17:21:15:15.466 Tx022135 [35mCRIT[0m AEE_End                         972 AEE_End: e867a88f2 ret 0
+2024-05-17:21:15:15.466 Tx02215D [35mCRIT[0m offlineSave                      93 tag:e867a88f2, success times:1, failed times:0, cost:273.648 ms
+2024-05-17:21:15:15.466 Tx022135 [32mINFO[0m AEE_UnInit                     1135 AEE_UnInit begin
+2024-05-17:21:15:15.500 Tx022166 [32mINFO[0m resolveLocalDns                 764 dns resolve aee.xf-yun.com as [114.118.67.61, 114.118.65.87, 114.118.67.62, 114.118.65.88, 114.118.65.86, 114.118.65.75]
+2024-05-17:21:15:15.559 Tx022166 [32mINFO[0m resolveLocalDns                 764 dns resolve cn-huabei-1-lg.xf-yun.com as [114.118.65.87, 114.118.65.86, 114.118.65.88, 114.118.65.75]
+2024-05-17:21:15:15.559 Tx022166 [32mINFO[0m genLicenseField                 202 timestamp is 1715951715
+2024-05-17:21:15:15.559 Tx022166 [32mINFO[0m addSessionPingInfo             1277 start to get ping host ip info 125.254.169.35.
+2024-05-17:21:15:15.570 Tx022166 [33mWARN[0m httpCallback                    500 wsi:0x7f016c00daa8 conn ptr is NULL,ignore this reason:21
+2024-05-17:21:15:15.570 Tx022166 [32mINFO[0m LWSContext                      111 create:3 context ok! Context:0x7f016c00bd10 ops:0x7f016c00bba0
+2024-05-17:21:15:15.570 Tx02218B [33mWARN[0m httpCallback                    500 wsi:0x7f018ca71540 conn ptr is NULL,ignore this reason:27
+2024-05-17:21:15:15.570 Tx02218B [33mWARN[0m httpCallback                    500 wsi:0x7f0168000f10 conn ptr is NULL,ignore this reason:85
+2024-05-17:21:15:15.570 Tx02218B [33mWARN[0m httpCallback                    500 wsi:0x7f016c00daa8 conn ptr is NULL,ignore this reason:71
+2024-05-17:21:15:15.713 Tx022166 [32mINFO[0m onSignResponse                  316 auth request succeed
+2024-05-17:21:15:15.713 Tx022166 [32mINFO[0m formatV2                        445 ValidLen:4022,PayLen:3470,SigLen:512,SchemaLen:2138,RelationLen:36,LicenseLen:1290,ConfigLen:0
+2024-05-17:21:15:15.714 Tx022166 [33mWARN[0m reload                          790 same version and checksum, no update required
+2024-05-17:21:15:15.714 Tx022166 [33mWARN[0m onSignSuccess                   601 reloadParser ret: 0
+2024-05-17:21:15:15.739 Tx022177 [33mWARN[0m httpCallback                    500 wsi:0x7f016c007868 conn ptr is NULL,ignore this reason:71
+2024-05-17:21:15:15.739 Tx022177 [33mWARN[0m httpCallback                    500 wsi:0x7f017c001480 conn ptr is NULL,ignore this reason:85
+2024-05-17:21:15:15.796 Tx022166 [32mINFO[0m uploadMetricTask                644 metrics sid is lat000e610d@dx18f86b145c7a4bc812
+2024-05-17:21:15:15.796 Tx022166 [32mINFO[0m authFileUpdateMain              498 async check thread exit
+2024-05-17:21:15:15.800 Tx022177 [33mWARN[0m httpCallback                    500 wsi:0x7f0179e317b0 conn ptr is NULL,ignore this reason:28
+2024-05-17:21:15:15.801 Tx02218B [33mWARN[0m httpCallback                    500 wsi:0x7f016c00daa8 conn ptr is NULL,ignore this reason:71
+2024-05-17:21:15:15.802 Tx02218B [33mWARN[0m httpCallback                    500 wsi:0x7f018ca717b0 conn ptr is NULL,ignore this reason:28
+2024-05-17:21:15:15.804 Tx02215F [32mINFO[0m WCMainLoop                     2049 succeed to stop WCMainLoop.
+2024-05-17:21:15:15.804 Tx022135 [32mINFO[0m destroy                         274 ability:e867a88f2 handle:0x555dafb0cf00 destroy ret:0
+2024-05-17:21:15:15.804 Tx022135 [33mWARN[0m unloadParamResource             193 unload resource:3
+2024-05-17:21:15:15.809 Tx022135 [32mINFO[0m unloadCommonResource            119 unload resource:0
+2024-05-17:21:15:15.809 Tx022135 [32mINFO[0m unloadCommonResource            119 unload resource:1
+2024-05-17:21:15:15.809 Tx022135 [32mINFO[0m unloadCommonResource            119 unload resource:2
+2024-05-17:21:15:15.809 Tx022135 [32mINFO[0m finit                            73 ability:e867a88f2 finit ret:0
+2024-05-17:21:15:15.809 Tx022135 [32mINFO[0m unInit                          200 engine:ef7d69542 uncontext ret:0
+2024-05-17:21:15:15.809 Tx022135 [32mINFO[0m AEE_UnInit                     1179 AEE_UnInit finish
+2024-05-17:21:15:15.809 Tx022135 [32mINFO[0m ~EDTManager                     924 start to deconstruct EDTManager
+Failed to start 'voice microphone'. Command exited unexpectedly.
+[0;35mError: Voice microphone initialization failed.[0m

@@ -1,0 +1,377 @@
+ /usr/bin/python3 /home/kuavo/catkin_dt/src/voice_pkg/scripts/master.py
+/home/robot/.local/lib/python3.10/site-packages/langchain/vectorstores/__init__.py:35: LangChainDeprecationWarning: Importing vector stores from langchain is deprecated. Importing from langchain will no longer be supported as of langchain==0.2.0. Please import from langchain-community instead:
+
+`from langchain_community.vectorstores import Chroma`.
+
+To install langchain-community run `pip install -U langchain-community`.
+  warnings.warn(
+/home/robot/.local/lib/python3.10/site-packages/langchain/chat_models/__init__.py:31: LangChainDeprecationWarning: Importing chat models from langchain is deprecated. Importing from langchain will no longer be supported as of langchain==0.2.0. Please import from langchain-community instead:
+
+`from langchain_community.chat_models import ChatOpenAI`.
+
+To install langchain-community run `pip install -U langchain-community`.
+  warnings.warn(
+/home/robot/.local/lib/python3.10/site-packages/langchain/document_loaders/__init__.py:36: LangChainDeprecationWarning: Importing document loaders from langchain is deprecated. Importing from langchain will no longer be supported as of langchain==0.2.0. Please import from langchain-community instead:
+
+`from langchain_community.document_loaders import UnstructuredFileLoader`.
+
+To install langchain-community run `pip install -U langchain-community`.
+  warnings.warn(
+加载bge模型 ...
+进入welcome阶段
+打断回调函数接收到打断信号，可以打断
+tts process is working, interrupted: False
+tts process is working, interrupted: False
+write to file
+tts process is working, interrupted: False
+write to file
+write to file
+write to file
+write to file
+write to file
+write to file
+write to file
+tts process is working, interrupted: False
+write to file
+write to file
+write to file
+write to file
+write to file
+write to file
+tts process is working, interrupted: False
+write to file
+write to file
+write to file
+ws is closed
+write to file
+### closed ### 2024-04-11 23:27:03.794470
+-------tts is over----------
+ffmpeg version 4.4.2-0ubuntu0.22.04.1 Copyright (c) 2000-2021 the FFmpeg developers
+  built with gcc 11 (Ubuntu 11.2.0-19ubuntu1)
+  configuration: --prefix=/usr --extra-version=0ubuntu0.22.04.1 --toolchain=hardened --libdir=/usr/lib/x86_64-linux-gnu --incdir=/usr/include/x86_64-linux-gnu --arch=amd64 --enable-gpl --disable-stripping --enable-gnutls --enable-ladspa --enable-libaom --enable-libass --enable-libbluray --enable-libbs2b --enable-libcaca --enable-libcdio --enable-libcodec2 --enable-libdav1d --enable-libflite --enable-libfontconfig --enable-libfreetype --enable-libfribidi --enable-libgme --enable-libgsm --enable-libjack --enable-libmp3lame --enable-libmysofa --enable-libopenjpeg --enable-libopenmpt --enable-libopus --enable-libpulse --enable-librabbitmq --enable-librubberband --enable-libshine --enable-libsnappy --enable-libsoxr --enable-libspeex --enable-libsrt --enable-libssh --enable-libtheora --enable-libtwolame --enable-libvidstab --enable-libvorbis --enable-libvpx --enable-libwebp --enable-libx265 --enable-libxml2 --enable-libxvid --enable-libzimg --enable-libzmq --enable-libzvbi --enable-lv2 --enable-omx --enable-openal --enable-opencl --enable-opengl --enable-sdl2 --enable-pocketsphinx --enable-librsvg --enable-libmfx --enable-libdc1394 --enable-libdrm --enable-libiec61883 --enable-chromaprint --enable-frei0r --enable-libx264 --enable-shared
+  libavutil      56. 70.100 / 56. 70.100
+  libavcodec     58.134.100 / 58.134.100
+  libavformat    58. 76.100 / 58. 76.100
+  libavdevice    58. 13.100 / 58. 13.100
+  libavfilter     7.110.100 /  7.110.100
+  libswscale      5.  9.100 /  5.  9.100
+  libswresample   3.  9.100 /  3.  9.100
+  libpostproc    55.  9.100 / 55.  9.100
+[mp3 @ 0x59a7f2c7f200] Estimating duration from bitrate, this may be inaccurate
+Input #0, mp3, from '/home/kuavo/catkin_dt/src/voice_pkg/temp_record/play.wav':
+  Duration: 00:00:07.96, start: 0.000000, bitrate: 48 kb/s
+  Stream #0:0: Audio: mp3, 16000 Hz, mono, fltp, 48 kb/s
+Stream mapping:
+  Stream #0:0 -> #0:0 (mp3 (mp3float) -> pcm_s16le (native))
+Press [q] to stop, [?] for help
+Output #0, wav, to '/home/kuavo/catkin_dt/src/voice_pkg/temp_record/playnew.wav':
+  Metadata:
+    ISFT            : Lavf58.76.100
+  Stream #0:0: Audio: pcm_s16le ([1][0][0][0] / 0x0001), 16000 Hz, mono, s16, 256 kb/s
+    Metadata:
+      encoder         : Lavc58.134.100 pcm_s16le
+size=     249kB time=00:00:07.92 bitrate= 257.2kbits/s speed=1.03e+03x    
+video:0kB audio:249kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.030637%
+play process is working
+Playing WAVE '/home/kuavo/catkin_dt/src/voice_pkg/temp_record/playnew.wav' : Signed 16 bit Little Endian, Rate 16000 Hz, Mono
+play process is working
+play process is working
+play process is working
+play process is working
+play process is working
+play process is working
+play process is working
+play process is working
+play process is working
+play process is working
+play process is working
+play process is working
+play process is working
+play process is working
+play process is working
+play process is working
+
+执行去往 0 号目标点的导航
+tts process is working, interrupted: False
+tts process is working, interrupted: False
+write to file
+write to file
+write to file
+tts process is working, interrupted: False
+write to file
+write to file
+write to file
+ws is closed
+write to file
+### closed ### 2024-04-11 23:27:14.306570
+-------tts is over----------
+ffmpeg version 4.4.2-0ubuntu0.22.04.1 Copyright (c) 2000-2021 the FFmpeg developers
+  built with gcc 11 (Ubuntu 11.2.0-19ubuntu1)
+  configuration: --prefix=/usr --extra-version=0ubuntu0.22.04.1 --toolchain=hardened --libdir=/usr/lib/x86_64-linux-gnu --incdir=/usr/include/x86_64-linux-gnu --arch=amd64 --enable-gpl --disable-stripping --enable-gnutls --enable-ladspa --enable-libaom --enable-libass --enable-libbluray --enable-libbs2b --enable-libcaca --enable-libcdio --enable-libcodec2 --enable-libdav1d --enable-libflite --enable-libfontconfig --enable-libfreetype --enable-libfribidi --enable-libgme --enable-libgsm --enable-libjack --enable-libmp3lame --enable-libmysofa --enable-libopenjpeg --enable-libopenmpt --enable-libopus --enable-libpulse --enable-librabbitmq --enable-librubberband --enable-libshine --enable-libsnappy --enable-libsoxr --enable-libspeex --enable-libsrt --enable-libssh --enable-libtheora --enable-libtwolame --enable-libvidstab --enable-libvorbis --enable-libvpx --enable-libwebp --enable-libx265 --enable-libxml2 --enable-libxvid --enable-libzimg --enable-libzmq --enable-libzvbi --enable-lv2 --enable-omx --enable-openal --enable-opencl --enable-opengl --enable-sdl2 --enable-pocketsphinx --enable-librsvg --enable-libmfx --enable-libdc1394 --enable-libdrm --enable-libiec61883 --enable-chromaprint --enable-frei0r --enable-libx264 --enable-shared
+  libavutil      56. 70.100 / 56. 70.100
+  libavcodec     58.134.100 / 58.134.100
+  libavformat    58. 76.100 / 58. 76.100
+  libavdevice    58. 13.100 / 58. 13.100
+  libavfilter     7.110.100 /  7.110.100
+  libswscale      5.  9.100 /  5.  9.100
+  libswresample   3.  9.100 /  3.  9.100
+  libpostproc    55.  9.100 / 55.  9.100
+[mp3 @ 0x5b989db19200] Estimating duration from bitrate, this may be inaccurate
+Input #0, mp3, from '/home/kuavo/catkin_dt/src/voice_pkg/temp_record/play.wav':
+  Duration: 00:00:03.20, start: 0.000000, bitrate: 48 kb/s
+  Stream #0:0: Audio: mp3, 16000 Hz, mono, fltp, 48 kb/s
+Stream mapping:
+  Stream #0:0 -> #0:0 (mp3 (mp3float) -> pcm_s16le (native))
+Press [q] to stop, [?] for help
+Output #0, wav, to '/home/kuavo/catkin_dt/src/voice_pkg/temp_record/playnew.wav':
+  Metadata:
+    ISFT            : Lavf58.76.100
+  Stream #0:0: Audio: pcm_s16le ([1][0][0][0] / 0x0001), 16000 Hz, mono, s16, 256 kb/s
+    Metadata:
+      encoder         : Lavc58.134.100 pcm_s16le
+size=     100kB time=00:00:03.16 bitrate= 259.1kbits/s speed= 767x    
+video:0kB audio:100kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.076077%
+play process is working
+Playing WAVE '/home/kuavo/catkin_dt/src/voice_pkg/temp_record/playnew.wav' : Signed 16 bit Little Endian, Rate 16000 Hz, Mono
+play process is working
+play process is working
+play process is working
+play process is working
+play process is working
+play process is working
+
+发送去往 1 号目标点的信号
+dkjfskfjalsk-=-=-=-=-=-=-=-=-=-=-=
+
+因为遇到障碍物，向下位机发送停止信号
+
+语音提示用户避让
+tts process is working, interrupted: False
+tts process is working, interrupted: False
+write to file
+write to file
+ws is closed
+write to file
+### closed ### 2024-04-11 23:27:36.409988
+-------tts is over----------
+tts process is working, interrupted: False
+ffmpeg version 4.4.2-0ubuntu0.22.04.1 Copyright (c) 2000-2021 the FFmpeg developers
+  built with gcc 11 (Ubuntu 11.2.0-19ubuntu1)
+  configuration: --prefix=/usr --extra-version=0ubuntu0.22.04.1 --toolchain=hardened --libdir=/usr/lib/x86_64-linux-gnu --incdir=/usr/include/x86_64-linux-gnu --arch=amd64 --enable-gpl --disable-stripping --enable-gnutls --enable-ladspa --enable-libaom --enable-libass --enable-libbluray --enable-libbs2b --enable-libcaca --enable-libcdio --enable-libcodec2 --enable-libdav1d --enable-libflite --enable-libfontconfig --enable-libfreetype --enable-libfribidi --enable-libgme --enable-libgsm --enable-libjack --enable-libmp3lame --enable-libmysofa --enable-libopenjpeg --enable-libopenmpt --enable-libopus --enable-libpulse --enable-librabbitmq --enable-librubberband --enable-libshine --enable-libsnappy --enable-libsoxr --enable-libspeex --enable-libsrt --enable-libssh --enable-libtheora --enable-libtwolame --enable-libvidstab --enable-libvorbis --enable-libvpx --enable-libwebp --enable-libx265 --enable-libxml2 --enable-libxvid --enable-libzimg --enable-libzmq --enable-libzvbi --enable-lv2 --enable-omx --enable-openal --enable-opencl --enable-opengl --enable-sdl2 --enable-pocketsphinx --enable-librsvg --enable-libmfx --enable-libdc1394 --enable-libdrm --enable-libiec61883 --enable-chromaprint --enable-frei0r --enable-libx264 --enable-shared
+  libavutil      56. 70.100 / 56. 70.100
+  libavcodec     58.134.100 / 58.134.100
+  libavformat    58. 76.100 / 58. 76.100
+  libavdevice    58. 13.100 / 58. 13.100
+  libavfilter     7.110.100 /  7.110.100
+  libswscale      5.  9.100 /  5.  9.100
+  libswresample   3.  9.100 /  3.  9.100
+  libpostproc    55.  9.100 / 55.  9.100
+[mp3 @ 0x56694ff01200] Estimating duration from bitrate, this may be inaccurate
+Input #0, mp3, from '/home/kuavo/catkin_dt/src/voice_pkg/temp_record/play.wav':
+  Duration: 00:00:01.84, start: 0.000000, bitrate: 48 kb/s
+  Stream #0:0: Audio: mp3, 16000 Hz, mono, fltp, 48 kb/s
+Stream mapping:
+  Stream #0:0 -> #0:0 (mp3 (mp3float) -> pcm_s16le (native))
+Press [q] to stop, [?] for help
+Output #0, wav, to '/home/kuavo/catkin_dt/src/voice_pkg/temp_record/playnew.wav':
+  Metadata:
+    ISFT            : Lavf58.76.100
+  Stream #0:0: Audio: pcm_s16le ([1][0][0][0] / 0x0001), 16000 Hz, mono, s16, 256 kb/s
+    Metadata:
+      encoder         : Lavc58.134.100 pcm_s16le
+size=      57kB time=00:00:01.80 bitrate= 261.5kbits/s speed= 634x    
+video:0kB audio:57kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.132761%
+play process is working
+Playing WAVE '/home/kuavo/catkin_dt/src/voice_pkg/temp_record/playnew.wav' : Signed 16 bit Little Endian, Rate 16000 Hz, Mono
+play process is working
+play process is working
+play process is working
+play process is working
+
+发送去往 1 号目标点的信号
+interrupt_navigation正常跳出
+
+if_success_navigate:  True
+
+执行位于 0 号目标点的讲解
+发送文本到喇叭: “东方红，太阳升……”当中国的第一颗人造卫星东方红一号进入太空，
+tts process is working, interrupted: False
+tts process is working, interrupted: False
+write to file
+write to file
+write to file
+tts process is working, interrupted: False
+write to file
+write to file
+write to file
+write to file
+write to file
+write to file
+tts process is working, interrupted: False
+write to file
+write to file
+ws is closed
+write to file
+### closed ### 2024-04-11 23:27:46.754444
+-------tts is over----------
+ffmpeg version 4.4.2-0ubuntu0.22.04.1 Copyright (c) 2000-2021 the FFmpeg developers
+  built with gcc 11 (Ubuntu 11.2.0-19ubuntu1)
+  configuration: --prefix=/usr --extra-version=0ubuntu0.22.04.1 --toolchain=hardened --libdir=/usr/lib/x86_64-linux-gnu --incdir=/usr/include/x86_64-linux-gnu --arch=amd64 --enable-gpl --disable-stripping --enable-gnutls --enable-ladspa --enable-libaom --enable-libass --enable-libbluray --enable-libbs2b --enable-libcaca --enable-libcdio --enable-libcodec2 --enable-libdav1d --enable-libflite --enable-libfontconfig --enable-libfreetype --enable-libfribidi --enable-libgme --enable-libgsm --enable-libjack --enable-libmp3lame --enable-libmysofa --enable-libopenjpeg --enable-libopenmpt --enable-libopus --enable-libpulse --enable-librabbitmq --enable-librubberband --enable-libshine --enable-libsnappy --enable-libsoxr --enable-libspeex --enable-libsrt --enable-libssh --enable-libtheora --enable-libtwolame --enable-libvidstab --enable-libvorbis --enable-libvpx --enable-libwebp --enable-libx265 --enable-libxml2 --enable-libxvid --enable-libzimg --enable-libzmq --enable-libzvbi --enable-lv2 --enable-omx --enable-openal --enable-opencl --enable-opengl --enable-sdl2 --enable-pocketsphinx --enable-librsvg --enable-libmfx --enable-libdc1394 --enable-libdrm --enable-libiec61883 --enable-chromaprint --enable-frei0r --enable-libx264 --enable-shared
+  libavutil      56. 70.100 / 56. 70.100
+  libavcodec     58.134.100 / 58.134.100
+  libavformat    58. 76.100 / 58. 76.100
+  libavdevice    58. 13.100 / 58. 13.100
+  libavfilter     7.110.100 /  7.110.100
+  libswscale      5.  9.100 /  5.  9.100
+  libswresample   3.  9.100 /  3.  9.100
+  libpostproc    55.  9.100 / 55.  9.100
+[mp3 @ 0x59b1c1366200] Estimating duration from bitrate, this may be inaccurate
+Input #0, mp3, from '/home/kuavo/catkin_dt/src/voice_pkg/temp_record/play.wav':
+  Duration: 00:00:05.76, start: 0.000000, bitrate: 48 kb/s
+  Stream #0:0: Audio: mp3, 16000 Hz, mono, fltp, 48 kb/s
+Stream mapping:
+  Stream #0:0 -> #0:0 (mp3 (mp3float) -> pcm_s16le (native))
+Press [q] to stop, [?] for help
+Output #0, wav, to '/home/kuavo/catkin_dt/src/voice_pkg/temp_record/playnew.wav':
+  Metadata:
+    ISFT            : Lavf58.76.100
+  Stream #0:0: Audio: pcm_s16le ([1][0][0][0] / 0x0001), 16000 Hz, mono, s16, 256 kb/s
+    Metadata:
+      encoder         : Lavc58.134.100 pcm_s16le
+size=     180kB time=00:00:05.72 bitrate= 257.7kbits/s speed= 107x    
+video:0kB audio:180kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.042318%
+发送文本到喇叭: 当《东方红》的乐曲响彻寰宇，
+tts process is working, interrupted: False
+Playing WAVE '/home/kuavo/catkin_dt/src/voice_pkg/temp_record/playnew.wav' : Signed 16 bit Little Endian, Rate 16000 Hz, Mono
+tts process is working, interrupted: False
+write to file
+write to file
+write to file
+write to file
+tts process is working, interrupted: False
+ws is closed
+write to file
+### closed ### 2024-04-11 23:27:48.435778
+-------tts is over----------
+ffmpeg version 4.4.2-0ubuntu0.22.04.1 Copyright (c) 2000-2021 the FFmpeg developers
+  built with gcc 11 (Ubuntu 11.2.0-19ubuntu1)
+  configuration: --prefix=/usr --extra-version=0ubuntu0.22.04.1 --toolchain=hardened --libdir=/usr/lib/x86_64-linux-gnu --incdir=/usr/include/x86_64-linux-gnu --arch=amd64 --enable-gpl --disable-stripping --enable-gnutls --enable-ladspa --enable-libaom --enable-libass --enable-libbluray --enable-libbs2b --enable-libcaca --enable-libcdio --enable-libcodec2 --enable-libdav1d --enable-libflite --enable-libfontconfig --enable-libfreetype --enable-libfribidi --enable-libgme --enable-libgsm --enable-libjack --enable-libmp3lame --enable-libmysofa --enable-libopenjpeg --enable-libopenmpt --enable-libopus --enable-libpulse --enable-librabbitmq --enable-librubberband --enable-libshine --enable-libsnappy --enable-libsoxr --enable-libspeex --enable-libsrt --enable-libssh --enable-libtheora --enable-libtwolame --enable-libvidstab --enable-libvorbis --enable-libvpx --enable-libwebp --enable-libx265 --enable-libxml2 --enable-libxvid --enable-libzimg --enable-libzmq --enable-libzvbi --enable-lv2 --enable-omx --enable-openal --enable-opencl --enable-opengl --enable-sdl2 --enable-pocketsphinx --enable-librsvg --enable-libmfx --enable-libdc1394 --enable-libdrm --enable-libiec61883 --enable-chromaprint --enable-frei0r --enable-libx264 --enable-shared
+  libavutil      56. 70.100 / 56. 70.100
+  libavcodec     58.134.100 / 58.134.100
+  libavformat    58. 76.100 / 58. 76.100
+  libavdevice    58. 13.100 / 58. 13.100
+  libavfilter     7.110.100 /  7.110.100
+  libswscale      5.  9.100 /  5.  9.100
+  libswresample   3.  9.100 /  3.  9.100
+  libpostproc    55.  9.100 / 55.  9.100
+[mp3 @ 0x64e2c58e8200] Estimating duration from bitrate, this may be inaccurate
+Input #0, mp3, from '/home/kuavo/catkin_dt/src/voice_pkg/temp_record/play.wav':
+  Duration: 00:00:02.70, start: 0.000000, bitrate: 48 kb/s
+  Stream #0:0: Audio: mp3, 16000 Hz, mono, fltp, 48 kb/s
+Stream mapping:
+  Stream #0:0 -> #0:0 (mp3 (mp3float) -> pcm_s16le (native))
+Press [q] to stop, [?] for help
+Output #0, wav, to '/home/kuavo/catkin_dt/src/voice_pkg/temp_record/playnew.wav':
+  Metadata:
+    ISFT            : Lavf58.76.100
+  Stream #0:0: Audio: pcm_s16le ([1][0][0][0] / 0x0001), 16000 Hz, mono, s16, 256 kb/s
+    Metadata:
+      encoder         : Lavc58.134.100 pcm_s16le
+size=      84kB time=00:00:02.66 bitrate= 259.7kbits/s speed=1.01e+03x    
+video:0kB audio:84kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.090278%
+last process is working, waiting
+Exception ignored in thread started by: <bound method NavigationClass.request_service_and_send_destination of <__main__.NavigationClass object at 0x72a98b710dc0>>
+Traceback (most recent call last):
+  File "/home/kuavo/catkin_dt/src/voice_pkg/scripts/master.py", line 393, in request_service_and_send_destination
+    response = command_client(address_code=destination) # 向服务发送请求，阻塞，直至到达目标点才会返回
+  File "/home/robot/ros_catkin_ws/install_isolated/lib/python3/dist-packages/rospy/impl/tcpros_service.py", line 442, in __call__
+    return self.call(*args, **kwds)
+  File "/home/robot/ros_catkin_ws/install_isolated/lib/python3/dist-packages/rospy/impl/tcpros_service.py", line 533, in call
+    raise ServiceException("transport error completing service call: %s"%(str(e)))
+rospy.service.ServiceException: transport error completing service call: unable to receive data from sender, check sender's logs for details
+last process is working, waiting
+last process is working, waiting
+Playing WAVE '/home/kuavo/catkin_dt/src/voice_pkg/temp_record/playnew.wav' : Signed 16 bit Little Endian, Rate 16000 Hz, Mono
+发送文本到喇叭: 中国从此走进了太空时代，
+tts process is working, interrupted: False
+tts process is working, interrupted: False
+write to file
+write to file
+tts process is working, interrupted: False
+write to file
+write to file
+ws is closed
+write to file
+### closed ### 2024-04-11 23:27:51.848839
+-------tts is over----------
+ffmpeg version 4.4.2-0ubuntu0.22.04.1 Copyright (c) 2000-2021 the FFmpeg developers
+  built with gcc 11 (Ubuntu 11.2.0-19ubuntu1)
+  configuration: --prefix=/usr --extra-version=0ubuntu0.22.04.1 --toolchain=hardened --libdir=/usr/lib/x86_64-linux-gnu --incdir=/usr/include/x86_64-linux-gnu --arch=amd64 --enable-gpl --disable-stripping --enable-gnutls --enable-ladspa --enable-libaom --enable-libass --enable-libbluray --enable-libbs2b --enable-libcaca --enable-libcdio --enable-libcodec2 --enable-libdav1d --enable-libflite --enable-libfontconfig --enable-libfreetype --enable-libfribidi --enable-libgme --enable-libgsm --enable-libjack --enable-libmp3lame --enable-libmysofa --enable-libopenjpeg --enable-libopenmpt --enable-libopus --enable-libpulse --enable-librabbitmq --enable-librubberband --enable-libshine --enable-libsnappy --enable-libsoxr --enable-libspeex --enable-libsrt --enable-libssh --enable-libtheora --enable-libtwolame --enable-libvidstab --enable-libvorbis --enable-libvpx --enable-libwebp --enable-libx265 --enable-libxml2 --enable-libxvid --enable-libzimg --enable-libzmq --enable-libzvbi --enable-lv2 --enable-omx --enable-openal --enable-opencl --enable-opengl --enable-sdl2 --enable-pocketsphinx --enable-librsvg --enable-libmfx --enable-libdc1394 --enable-libdrm --enable-libiec61883 --enable-chromaprint --enable-frei0r --enable-libx264 --enable-shared
+  libavutil      56. 70.100 / 56. 70.100
+  libavcodec     58.134.100 / 58.134.100
+  libavformat    58. 76.100 / 58. 76.100
+  libavdevice    58. 13.100 / 58. 13.100
+  libavfilter     7.110.100 /  7.110.100
+  libswscale      5.  9.100 /  5.  9.100
+  libswresample   3.  9.100 /  3.  9.100
+  libpostproc    55.  9.100 / 55.  9.100
+[mp3 @ 0x5cb40ae07200] Estimating duration from bitrate, this may be inaccurate
+Input #0, mp3, from '/home/kuavo/catkin_dt/src/voice_pkg/temp_record/play.wav':
+  Duration: 00:00:02.52, start: 0.000000, bitrate: 48 kb/s
+  Stream #0:0: Audio: mp3, 16000 Hz, mono, fltp, 48 kb/s
+Stream mapping:
+  Stream #0:0 -> #0:0 (mp3 (mp3float) -> pcm_s16le (native))
+Press [q] to stop, [?] for help
+Output #0, wav, to '/home/kuavo/catkin_dt/src/voice_pkg/temp_record/playnew.wav':
+  Metadata:
+    ISFT            : Lavf58.76.100
+  Stream #0:0: Audio: pcm_s16le ([1][0][0][0] / 0x0001), 16000 Hz, mono, s16, 256 kb/s
+    Metadata:
+      encoder         : Lavc58.134.100 pcm_s16le
+size=      79kB time=00:00:02.48 bitrate= 260.0kbits/s speed=45.8x    
+video:0kB audio:79kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.096726%
+last process is working, waiting
+last process is working, waiting
+Playing WAVE '/home/kuavo/catkin_dt/src/voice_pkg/temp_record/playnew.wav' : Signed 16 bit Little Endian, Rate 16000 Hz, Mono
+发送文本到喇叭: 开启了中国航天事业的新纪元。
+tts process is working, interrupted: False
+tts process is working, interrupted: False
+write to file
+write to file
+write to file
+tts process is working, interrupted: False
+write to file
+ws is closed
+write to file
+### closed ### 2024-04-11 23:27:54.621930
+-------tts is over----------
+ffmpeg version 4.4.2-0ubuntu0.22.04.1 Copyright (c) 2000-2021 the FFmpeg developers
+  built with gcc 11 (Ubuntu 11.2.0-19ubuntu1)
+  configuration: --prefix=/usr --extra-version=0ubuntu0.22.04.1 --toolchain=hardened --libdir=/usr/lib/x86_64-linux-gnu --incdir=/usr/include/x86_64-linux-gnu --arch=amd64 --enable-gpl --disable-stripping --enable-gnutls --enable-ladspa --enable-libaom --enable-libass --enable-libbluray --enable-libbs2b --enable-libcaca --enable-libcdio --enable-libcodec2 --enable-libdav1d --enable-libflite --enable-libfontconfig --enable-libfreetype --enable-libfribidi --enable-libgme --enable-libgsm --enable-libjack --enable-libmp3lame --enable-libmysofa --enable-libopenjpeg --enable-libopenmpt --enable-libopus --enable-libpulse --enable-librabbitmq --enable-librubberband --enable-libshine --enable-libsnappy --enable-libsoxr --enable-libspeex --enable-libsrt --enable-libssh --enable-libtheora --enable-libtwolame --enable-libvidstab --enable-libvorbis --enable-libvpx --enable-libwebp --enable-libx265 --enable-libxml2 --enable-libxvid --enable-libzimg --enable-libzmq --enable-libzvbi --enable-lv2 --enable-omx --enable-openal --enable-opencl --enable-opengl --enable-sdl2 --enable-pocketsphinx --enable-librsvg --enable-libmfx --enable-libdc1394 --enable-libdrm --enable-libiec61883 --enable-chromaprint --enable-frei0r --enable-libx264 --enable-shared
+  libavutil      56. 70.100 / 56. 70.100
+  libavcodec     58.134.100 / 58.134.100
+  libavformat    58. 76.100 / 58. 76.100
+  libavdevice    58. 13.100 / 58. 13.100
+  libavfilter     7.110.100 /  7.110.100
+  libswscale      5.  9.100 /  5.  9.100
+  libswresample   3.  9.100 /  3.  9.100
+  libpostproc    55.  9.100 / 55.  9.100
+[mp3 @ 0x5f82cd5fc200] Estimating duration from bitrate, this may be inaccurate
+Input #0, mp3, from '/home/kuavo/catkin_dt/src/voice_pkg/temp_record/play.wav':
+  Duration: 00:00:02.77, start: 0.000000, bitrate: 48 kb/s
+  Stream #0:0: Audio: mp3, 16000 Hz, mono, fltp, 48 kb/s
+Stream mapping:
+  Stream #0:0 -> #0:0 (mp3 (mp3float) -> pcm_s16le (native))
+Press [q] to stop, [?] for help
+Output #0, wav, to '/home/kuavo/catkin_dt/src/voice_pkg/temp_record/playnew.wav':
+  Metadata:
+    ISFT            : Lavf58.76.100
+  Stream #0:0: Audio: pcm_s16le ([1][0][0][0] / 0x0001), 16000 Hz, mono, s16, 256 kb/s
+    Metadata:
+      encoder         : Lavc58.134.100 pcm_s16le
+size=      87kB time=00:00:02.73 bitrate= 259.6kbits/s speed= 866x    
+video:0kB audio:87kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.087933%
+last process is working, waiting
+^Z
+[1]+  Stopped                 /usr/bin/python3 /home/kuavo/catkin_dt/src/voice_pkg/scripts/master.py
+kuavo@kuavo-NUC12WSKi7:~$ 

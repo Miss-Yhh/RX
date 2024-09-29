@@ -1,0 +1,318 @@
+import os
+import json
+import shutil
+from datetime import datetime
+
+import httpx
+from hashlib import sha256
+from openai import OpenAI, AsyncOpenAI
+
+import torch
+from langchain.vectorstores import Chroma
+from transformers import AutoTokenizer, AutoModel
+from langchain.embeddings.huggingface import HuggingFaceEmbeddings
+from langchain.text_splitter import RecursiveCharacterTextSplitter
+
+from .testgpt4 import gpt_stream, gpt_direct
+from .testglm import glm_stream, glm_direct
+from .testhuozi import huozi_stream, huozi_direct
+
+class OpenAiBuilder:
+    username = None
+    password = None
+
+    def __init__(self, base_url):
+        self.base_url = base_url
+        self.cookies = None
+
+    def login(self, username, password=None, password_path=None):
+        if password_path:
+            with open(password_path, "r") as f:
+                password = f.read().strip()
+        password = sha256(password.encode("utf-8")).hexdigest()
+        assert password, "password or password_path must be provided"
+
+        login = httpx.post(
+            f"{self.base_url}/api/login",
+            json={"name": username, "password_hash": password},
+        )
+        if login.status_code != 200:
+            raise Exception(f"Failed to login: {login.text}")
+        self.cookies = {key: value for key, value in login.cookies.items()}
+
+    def build(self) -> OpenAI:
+        http_client = httpx.Client(cookies=self.cookies)
+        client = OpenAI(
+            base_url=f"{self.base_url}/api/v1",
+            api_key="token-abc123",
+            http_client=http_client,
+        )
+
+        return client
+
+    def build_async(self) -> AsyncOpenAI:
+        http_client = httpx.AsyncClient(cookies=self.cookies)
+        client = AsyncOpenAI(
+            base_url=f"{self.base_url}/api/v1",
+            api_key="token-abc123",
+            http_client=http_client
+        )
+        return client
+
+class Searchwmj:
+	def __init__(self) -> None:
+		bge_small_path = '/home/kuavo/catkin_dt/src/checkpoints/bge_small_zh_v1.5/models--BAAI--bge-small-zh-v1.5/snapshots/7999e1d3359715c523056ef9478215996d62a620'
+		bge_large_path = '/home/kuavo/catkin_dt/src/checkpoints/bge_large_zh_v1.5/models--BAAI--bge-large-zh-v1.5/snapshots/79e7739b6ab944e86d6171e44d24c997fc1e0116'
+		json_path = '/home/kuavo/catkin_dt/src/voice_pkg/scripts/interrupt/LLM/json/hh.json'
+		chroma_path = '/home/kuavo/catkin_dt/src/voice_pkg/scripts/qa_legacy/chromawmj'
+
+		# 加载bge模型
+		self.ckptpath = bge_small_path
+		self.text2vec = bge_large_path
+		self.tokenizer = AutoTokenizer.from_pretrained(self.ckptpath)
+		self.model = AutoModel.from_pretrained(self.ckptpath)
+		self.model.eval()
+
+		# 更新数据库
+		self.jsondata = self.readjson(json_path)
+		self.numpydata = self.transjson2numpy()
+		self.db = self.construct_knowledge_base(chroma_path)
+  
+	def readjson(self, path):
+		keyresults, docresults = [], []
+		with open(path, 'r', encoding='utf-8') as f:
+			data = json.load(f)
+			
+		def find_values(json_data, key, para):
+			"""递归搜索所有键为 key 的值"""
+			if isinstance(json_data, dict):  # 如果当前数据是字典
+				for k, v in json_data.items():
+					if k == key:
+						keyresults.append(v)  # 如果找到了匹配的键，添加其值到结果列表
+					if k == para:
+						docresults.append(v)  # 如果找到了匹配的键，添加其值到结果列表
+					find_values(v, key, para)  # 递归搜索该键的值
+			elif isinstance(json_data, list):  # 如果当前数据是列表
+				for item in json_data:
+					find_values(item, key, para)  # 递归搜索列表中的每一个元素
+		find_values(json_data=data, key='name', para='introduction')
+		return {'关键词':keyresults, '描述内容':docresults}
+
+	def construct_knowledge_base(self, chromadir):
+		embeddings = HuggingFaceEmbeddings(model_name=self.text2vec)
+		# 知识库中单段文本长度
+		CHUNK_SIZE = 30
+		# 知识库中相邻文本重合长度
+		OVERLAP_SIZE = 5
+		# 文档 1 的处理
+		# 检查是否已存在嵌入向量数据库
+		data = "\n".join(self.jsondata['描述内容'])
+
+		splitter = RecursiveCharacterTextSplitter(
+			chunk_size=CHUNK_SIZE,
+			chunk_overlap=OVERLAP_SIZE
+		)
+		texts = splitter.split_text(data)
+		# 检查并清空持久化目录
+		if os.path.exists(chromadir):
+			shutil.rmtree(chromadir)
+		os.makedirs(chromadir, exist_ok=True)
+			
+		db = Chroma.from_texts(texts, embeddings, persist_directory=chromadir)
+		db.persist()
+		return db
+  
+	def transjson2numpy(self,):
+		# Tokenize sentences
+		encoded_input = self.tokenizer(self.jsondata['关键词'], max_length=512, padding=True, truncation=True, return_tensors='pt')
+
+		# Compute token embeddings
+		with torch.no_grad():
+			model_output = self.model(**encoded_input)
+			# Perform pooling. In this case, cls pooling.
+			sentence_embeddings = model_output[0][:, 0]
+		# normalize embeddings
+		key_embeddings = torch.nn.functional.normalize(sentence_embeddings, p=2, dim=1)
+
+		# Tokenize sentences
+		encoded_input = self.tokenizer(self.jsondata['描述内容'], max_length=512, padding=True, truncation=True, return_tensors='pt')
+
+		# Compute token embeddings
+		with torch.no_grad():
+			model_output = self.model(**encoded_input)
+			# Perform pooling. In this case, cls pooling.
+			sentence_embeddings = model_output[0][:, 0]
+		# normalize embeddings
+		sentence_embeddings = torch.nn.functional.normalize(sentence_embeddings, p=2, dim=1)
+
+		# 保存embedding到numpy
+		return {'key':key_embeddings, 'para':sentence_embeddings}
+  
+	def get_bge_query(self, query='说说机器人是什么'):
+		# Tokenize sentences
+		encoded_input = self.tokenizer([query], max_length=512, padding=True, truncation=True, return_tensors='pt')
+
+		# Compute token embeddings
+		with torch.no_grad():
+			model_output = self.model(**encoded_input)
+			# Perform pooling. In this case, cls pooling.
+			sentence_embeddings = model_output[0][:, 0]
+			
+		# normalize embeddings
+		sentence_embeddings = torch.nn.functional.normalize(sentence_embeddings, p=2, dim=1)
+			
+		# cal sim sentence
+		key_res = torch.mm(torch.Tensor(self.numpydata['key']), sentence_embeddings.T)
+		doc_res = torch.mm(torch.Tensor(self.numpydata['para']), sentence_embeddings.T)
+
+		# 旧的逻辑是，先匹配短的关键词，匹配上了就用，不然话就匹配doc的
+		# 新的逻辑：返回前两个关键词所匹配上的文本
+		# 测试新的逻辑：返回关键词和“描述内容”的top1
+		score_top1_key = float(key_res.max())
+		score_top1_doc = float(doc_res.max())
+		if score_top1_doc < 0.9 and score_top1_key < 0.9:
+			# print(score_top1_doc, '\n', score_top1_key)
+			return ""
+		ind_top1_key = int(key_res.argmax())
+		ind_top1_doc = int(doc_res.argmax())
+		# key_res[key_res.argmax()] = 0
+		# ind_top2 = int(key_res.argmax())
+		keylist = self.jsondata['关键词']
+		doclist = self.jsondata['描述内容']
+		return keylist[ind_top1_key]+':'+doclist[ind_top1_key] + "; " + keylist[ind_top1_doc]+':'+doclist[ind_top1_doc]
+	
+	def get_re_query(self, query='说说机器人是什么'):
+		match_keypara = []
+		for i in range(len(self.jsondata['关键词'])):
+			keyword = self.jsondata['关键词'][i]
+			para = self.jsondata['描述内容'][i]
+			if keyword in query:
+				match_keypara.append(keyword+":"+para)
+		if len(match_keypara) == 0:
+			return ""
+		else:
+			res = "; ".join(match_keypara)
+		return res  # list
+  
+	def get_chroma_query(self, query='说说机器人是什么'):
+		#compressor = LLMChainExtractor.from_llm(self.llm)
+		#在展品介绍中检索
+		found_docs = self.db.similarity_search_with_score(query, k=10)
+		res = []
+		for doc, score in found_docs:
+			if score > 300:
+				continue
+			else:
+				res.append(doc.page_content)
+		# print('db res=', res)
+		return "\n".join(res)
+
+class DocumentQA:
+	def __init__(self, model='gpt-4', stream_bool=True, debug_bool=True):
+		self.model = model				# 用于生成回答的大模型
+		self.debug_bool = debug_bool	  # 是否打印调试信息
+		self.stream_bool = stream_bool	# 是否使用流式返回
+
+		self.searchwmj = Searchwmj()
+
+		if self.model == 'huozi':
+			username = "陈一帆"
+			builder = OpenAiBuilder("https://huozi.8wss.com")
+			builder.login(username, password_path='/home/kuavo/catkin_dt/huozi_password.txt')
+			self.client = builder.build()
+
+	def process_query(self, query):
+		# 获取各种不同方式检索到的文料
+		documents_list = [self.searchwmj.get_bge_query(query=query), 
+						  self.searchwmj.get_re_query(query=query), 
+						  self.searchwmj.get_chroma_query(query=query)]
+		
+		if self.debug_bool:
+			print("\n从文档找到的文料: \n", documents_list)
+		
+		# 对所有相关文料进行拼接
+		sum_document = ""
+		for document in documents_list:
+			if document:
+				sum_document += document + '\n'
+		
+		# 返回生成器或回答
+		return self.generate_response(sum_document, query)
+
+	def generate_response(self, summary_prompt, query):
+		# summary_prompt = '' # summary_prompt置为空测试保存gpt-4回答的功能
+  
+		system_prompt = "你是哈工大研发的一个航天馆展厅介绍机器人、属于哈尔滨工业大学（简称哈工大）航天馆。"
+
+		question = f"请参考文本:“{summary_prompt}”，回答问题:“{query}”。请给出问题的答案，注意：回答不要超过50个汉字，而且回答要完整。如果根据参考文本无法给出答案，不要说什么“根据提供的文本无法回答”而是直接根据你的常识直接给出简洁的答案。"
+		
+		if not summary_prompt:
+			self.model = 'gpt-4'
+
+			# 开启该模式，会将gpt-4的回答保存起来
+			collect_answers_from_gpt_4 = if_collect_answers_from_gpt_4()
+			self.stream_bool = False
+
+			if collect_answers_from_gpt_4:
+				json_path = '/home/kuavo/catkin_dt/src/voice_pkg/scripts/interrupt/LLM/answer_from_gpt_4/answer_from_gpt_4.json'
+
+				answer = gpt_direct(model='gpt-4', query=system_prompt+question)
+
+				# 读取json文件
+				with open(json_path, 'r', encoding='utf-8') as f:
+					data = json.load(f)
+
+				# 添加新的键值对
+				data[query] = answer
+
+				# 将更新后的字典写入json文件
+				with open(json_path, 'w', encoding='utf-8') as f:
+					json.dump(data, f, ensure_ascii=False, indent=4)
+
+			return answer
+
+		if self.model == 'gpt-4':
+			if self.stream_bool:
+				return gpt_stream(model='gpt-4', query=system_prompt+question)
+			else:
+				return gpt_direct(model='gpt-4', query=system_prompt+question)
+		elif self.model == 'chatglm':
+			if self.stream_bool:
+				return glm_stream(query=system_prompt+question)
+			else:
+				return glm_direct(query=system_prompt+question)
+		elif self.model == 'huozi':
+			if self.stream_bool:
+				return huozi_stream(client=self.client, system=system_prompt, content=question)
+			else:
+				return huozi_direct(client=self.client, system=system_prompt, content=question)
+		else:
+			raise(f"The model {self.model} is not supportted.")
+	
+def if_collect_answers_from_gpt_4():
+	return 1
+
+if __name__ == '__main__':
+	# query = '什么是长征火箭？'
+	# a = Searchwmj()
+	# time1 = datetime.now()
+	# print('----------')
+	# print(a.get_bge_query(query))
+	# print(datetime.now()-time1)
+	# print('----------')
+	# print(a.get_re_query(query))
+	# print(datetime.now()-time1)
+	# print('----------')
+	# print(a.get_chroma_query(query))
+	# print(datetime.now()-time1)
+	# print('----------')
+ 
+	stream_bool = True
+	doc_qa_class = DocumentQA(model='huozi', stream_bool=stream_bool)
+	responce = doc_qa_class.process_query(input("请输入问题："))
+	if stream_bool:
+		for r in responce:
+			if r:
+				print(r)
+	else:
+		print(responce)

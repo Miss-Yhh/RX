@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import pyaudio
 from pydub.playback import play
 from pydub import AudioSegment
@@ -13,17 +14,17 @@ def play_sound():
     playsound(savepath)
 
 
-import sounddevice as sd
-import soundfile as sf
+# import sounddevice as sd
+# import soundfile as sf
 
-def sd_play():
-    filename = '/home/kuavo/catkin_dt/src/voice_pkg/temp_record/iamhere.mp3'
-    data, fs = sf.read(filename)  # 读取音频文件
+# def sd_play():
+#     filename = '/home/kuavo/catkin_dt/src/voice_pkg/temp_record/iamhere.mp3'
+#     data, fs = sf.read(filename)  # 读取音频文件
 
-    # 指定设备索引或名称播放音频
-    device_name = 'Bothlent UAC Dongle: USB Audio'  # 你可以根据实际情况替换这里的设备名称
+#     # 指定设备索引或名称播放音频
+#     device_name = 'Bothlent UAC Dongle: USB Audio'  # 你可以根据实际情况替换这里的设备名称
 
-    sd.play(data, fs, device=1)
+#     sd.play(data, fs, device=1)
 
 import pyaudio
 import wave

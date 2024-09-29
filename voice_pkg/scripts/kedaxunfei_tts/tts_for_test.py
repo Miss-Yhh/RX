@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import subprocess
 import websocket
 import datetime
@@ -28,7 +29,7 @@ STATUS_CONTINUE_FRAME = 1  # 中间帧标识
 STATUS_LAST_FRAME = 2  # 最后一帧的标识
 
 playstate = 'stop'
-savepath = '/home/kuavo/catkin_dt/src/voice_pkg/temp_record/play.wav'
+savepath = '/home/hit/RX/voice_pkg/temp_record/play.wav'
 
 class Ws_Param(object):
     # 初始化
@@ -139,7 +140,7 @@ def get_tts(textinput, savepath):
 
     
     # 测试时候在此处正确填写相关信息即可运行
-    with open('/home/kuavo/catkin_dt/config_dt.json', 'r') as fj:
+    with open('/home/hit/RX/voice_pkg/scripts/config_dt.json', 'r') as fj:
         config = json.load(fj)
     APPID, APISecret, APIKey = config['kedaxunfei_appid'], config['kedaxunfei_apiSecret'], config['kedaxunfei_appkey']
     wsParam = Ws_Param(APPID=APPID, APISecret=APISecret,
@@ -165,7 +166,7 @@ def tts_playsound(input, index=1000):
         playstate = 'stop'
 
     print('text = ', input)
-    with open('/home/kuavo/catkin_dt/src/voice_pkg/temp_record/text2speech/qige.json', 'r+', encoding='utf-8') as fj:
+    with open('/home/hit/RX/voice_pkg/temp_record/text2speech/qige.json', 'r+', encoding='utf-8') as fj:
         jsondata = json.load(fj)
         if text in jsondata:
             print('already has')
@@ -174,7 +175,7 @@ def tts_playsound(input, index=1000):
             print('not file exist')
             pinyin_text = pypinyin.pinyin(text, style=pypinyin.NORMAL)
             pinyin_text = '_'.join([i[0] for i in pinyin_text])
-            savepath = os.path.join('/home/kuavo/catkin_dt/src/voice_pkg/temp_record/text2speech', pinyin_text+'.wav')
+            savepath = os.path.join('/home/hit/RX/voice_pkg/temp_record/text2speech', pinyin_text+'.wav')
             print(savepath)
             get_tts(savepath, input)
 
@@ -211,7 +212,7 @@ lastproc = None
 
 if __name__ == "__main__":
     text = '最后再将生成好的音频文件保存起来'
-    savepath = '/home/kuavo/catkin_dt/src/voice_pkg/temp_record/play.mp3'
+    savepath = '/home/hit/RX/voice_pkg/temp_record/play.mp3'
     time1 = datetime.now()
     get_tts(text, savepath)
     time2 = datetime.now()

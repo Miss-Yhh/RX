@@ -493,10 +493,52 @@
 
 # if __name__ == "__main__":
 #     main_class = MainClass()
-from utils import play_sound
+# from utils import play_sound
+# from multiprocessing import Process
+# path='/home/hit/RX/voice_pkg/src/kedaxunfei_ivw/testAudio/等一下2output.wav'
+# play_sound(path)
+# playproc = Process(target=play_sound, args=(path,))
+#         # 启动新进程
+# playproc.start()
+import re
+import os
+import ast
+import json
+import time
+import yaml
+import random
+import inspect
+import threading
+import subprocess
+from time import sleep
+import _thread as thread
+from datetime import datetime
+from typing import Dict, List, Tuple, Optional
+import pypinyin
+from mic_ctl import record
+from utils import play_sound,get_mic_from_audio
+from test_host_3090_iat import iat_web_api, kedaxunfei_iat_service
+from test_host_3090_tts import get_tts
+from iat import run_iat
+
 from multiprocessing import Process
-path='/home/hit/RX/voice_pkg/src/kedaxunfei_ivw/testAudio/等一下2output.wav'
-play_sound(path)
-playproc = Process(target=play_sound, args=(path,))
-        # 启动新进程
-playproc.start()
+from tts import get_tts
+from XF import XFSerialProtocol, XFJsonProtocol
+
+
+import rospy
+from std_msgs.msg import String, Bool
+
+from GlobalValues import GlobalValuesClass
+#from interrupt.PPL.api1 import get_llm_answer
+from qa import intention_detect,stream_qa
+
+record_index = -1
+def text2speech(text=''):
+        savepath = '/home/hit/RX/voice_pkg/scripts/kedaxunfei_tts/hao.wav '
+        get_tts(text,savepath)
+
+a=('好')
+text2speech(a)
+
+    

@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import subprocess
 import wave
 import websocket
@@ -174,7 +175,7 @@ def get_tts(textinput, savepath):
     # 测试时候在此处正确填写相关信息即可运行
     print(textinput)
     print(savepath)
-    with open('/home/kuavo/catkin_dt/config_dt.json', 'r') as fj:
+    with open('/home/hit/RX/voice_pkg/scripts/config_dt.json', 'r') as fj:
         config = json.load(fj)
     APPID, APISecret, APIKey = config['kedaxunfei_appid'], config['kedaxunfei_apiSecret'], config['kedaxunfei_appkey']
     wsParam = Ws_Param(APPID=APPID, APISecret=APISecret,

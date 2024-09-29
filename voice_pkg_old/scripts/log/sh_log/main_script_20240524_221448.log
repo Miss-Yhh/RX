@@ -1,0 +1,24 @@
+检查以 'ssh -N -L 8000' 开头的 SSH 进程...
+[0;36mKill all port forwarding.[0m
+没有找到任何以 'ssh -N -L 8000' 开头的进程。
+检查运行脚本 'task3_ssh_port_forwarding.sh' 的进程...
+没有找到任何以 '/bin/bash ./task3_ssh_port_forwarding.sh' 开头的进程。
+检查以 'ssh -N -L 8000' 开头的 SSH 进程...
+没有找到任何以 'ssh -N -L 8000' 开头的进程。
+检查运行脚本 'task3_ssh_port_forwarding.sh' 的进程...
+没有找到任何以 '/bin/bash ./task3_ssh_port_forwarding.sh' 开头的进程。
+[0;36mStarting Roscore...[0m
+cat: pid_file: 没有那个文件或目录
+错误：list of process IDs must follow -p
+
+用法：
+ ps [选项]
+
+ Try 'ps --help <simple|list|output|threads|misc|all>'
+  or 'ps --help <s|l|o|t|m|a>'
+ for additional help text.
+
+如需了解更多细节，请阅读 ps(1)。
+Failed to start Roscore.
+kill：用法： kill [-s 信号声明 | -n 信号编号 | -信号声明] 进程号 | 任务声明 ... 或 kill -l [信号声明]
+[0;35mError: Roscore initialization failed.[0m

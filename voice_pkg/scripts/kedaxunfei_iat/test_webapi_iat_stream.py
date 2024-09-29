@@ -329,7 +329,7 @@ def kedaxunfei_iat_service(wsParam):
 					print("\n录音结束。", datetime.now())
 
 					# 写个文件记录时间
-					with open('/home/kuavo/catkin_dt/src/voice_pkg/scripts/kedaxunfei_iat/file.txt', 'w') as f:
+					with open('/home/hit/RX/voice_pkg/scripts/kedaxunfei_iat/file.txt', 'w') as f:
 						f.write(str(datetime.now()))
 					if has_sound == True:
 						# 最后等待一秒再关闭连接，保证最后的数据传过去了
@@ -405,7 +405,7 @@ touch_sub = rospy.Subscriber("touchpad_chatter", String, touch_callback) # 订�
 
 
 def iat_web_api(input, iter=1, environment_name='default', card=2):
-	with open('/home/kuavo/catkin_dt/config_dt.json', 'r') as fj:
+	with open('/home/hit/RX/voice_pkg/scripts/config_dt.json', 'r') as fj:
 		config = json.load(fj)
 	APPID, APISecret, APIKey = config['kedaxunfei_appid'], config['kedaxunfei_apiSecret'], config['kedaxunfei_appkey']
 	wsParam = Ws_Param(APPID=APPID, 
@@ -419,7 +419,7 @@ def iat_web_api(input, iter=1, environment_name='default', card=2):
 	if input == 'zai':
 			filename = '/home/kuavo/catkin_dt/src/voice_pkg/temp_record/iamhere_cut.wav'
 	else:
-			filename = '/home/kuavo/catkin_dt/src/voice_pkg/temp_record/ding_cut_small.wav'
+			filename = '/home/hit/RX/voice_pkg/scripts/kedaxunfei_iat/test_webapi_iat_stream.py'
 	# thread.start_new_thread(run_prompt_audio, (filename,))
 	# t = threading.Thread(target=run_prompt_audio, args=(filename,))
 	# t.start()

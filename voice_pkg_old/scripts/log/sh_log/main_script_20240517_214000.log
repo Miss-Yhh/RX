@@ -1,0 +1,78 @@
+[0;36mStarting Roscore...[0m
+Roscore is already running.
+[0;36mStarting Voice Microphone...[0m
+mic_appIDfe7065eb
+mic_apiKeye6410e10f9ac4169cae3a7a1c795961d
+mic_apiSecretNTg3NDhkMDY2MGE2ZjQ0Nzk1NzY3MDVh
+2024-05-17:21:40:02.018 Tx0313AA [32mINFO[0m AEE_Init                        194 workDir is ./
+2024-05-17:21:40:02.018 Tx0313AA [32mINFO[0m AEE_Init                        199 licenseFile path is 
+2024-05-17:21:40:02.018 Tx0313AA [32mINFO[0m AEE_Init                        200 authBatch is (null)
+2024-05-17:21:40:02.018 Tx0313AA [32mINFO[0m AEE_Init                        201 userdefined device id is (null)
+2024-05-17:21:40:02.018 Tx0313AA [32mINFO[0m AEE_Init                        202 sdk mode: net mode
+2024-05-17:21:40:02.018 Tx0313AA [35mCRIT[0m init                            987 framework version is 2.2.15_rc1
+2024-05-17:21:40:02.018 Tx0313AA [35mCRIT[0m init                            989 appid is fe7065eb
+2024-05-17:21:40:02.018 Tx0313AA [35mCRIT[0m init                            994 auth type is 0,platform is 4, arch is 4
+2024-05-17:21:40:02.018 Tx0313C9 [32mINFO[0m WCMainLoop                     2039 succeed to start WCMainLoop.
+2024-05-17:21:40:02.018 Tx0313AA [32mINFO[0m setCustomDeviceIDPartWeight     941 use default device id part weight
+2024-05-17:21:40:02.018 Tx0313AA [32mINFO[0m getDeviceLevel                 1798 cached device level 2
+2024-05-17:21:40:02.019 Tx0313AA [35mCRIT[0m init                           1048 device security level is 2
+2024-05-17:21:40:02.019 Tx0313AA [32mINFO[0m init                           1051 auth mode: compete auth, registed abilities: e867a88f2;
+2024-05-17:21:40:02.019 Tx0313AA [32mINFO[0m getDeviceId                     850 PARTA:36,PARTD:0
+2024-05-17:21:40:02.019 Tx0313AA [32mINFO[0m getDeviceId                     868 PARTB:1 is 48:21:0b:60:8a:d8
+2024-05-17:21:40:02.038 Tx0313AA [32mINFO[0m getDeviceId                     874 PARTC:1 
+2024-05-17:21:40:02.039 Tx0313AA [35mCRIT[0m checkDeviceChanged              756 cached device is c887604519435269749c520361c6dc24bd98f9e7ac8be2d19adaf0cb80195552fecd8caebd841f49620cdbc982113147a1da699f25e7d1d29b4a07208557f4a4fe52d8a51bff08875f20db06a58b4d3d
+2024-05-17:21:40:02.039 Tx0313AA [35mCRIT[0m storeDevice                    1778 start store device c887604519435269749c520361c6dc24bd98f9e7ac8be2d19adaf0cb80195552fecd8caebd841f49620cdbc982113147a1da699f25e7d1d29b4a07208557f4a4fe52d8a51bff08875f20db06a58b4d3d
+2024-05-17:21:40:02.039 Tx0313AA [32mINFO[0m setKey                          110 store 8457,8457 device success
+2024-05-17:21:40:02.040 Tx0313AA [32mINFO[0m localAuthStorageCheck          1260 start cached license check
+2024-05-17:21:40:02.041 Tx0313AA [32mINFO[0m formatV2                        445 ValidLen:4026,PayLen:3470,SigLen:512,SchemaLen:2138,RelationLen:36,LicenseLen:1290,ConfigLen:0
+2024-05-17:21:40:02.042 Tx0313AA [32mINFO[0m init                            645 parser init ret:0
+2024-05-17:21:40:02.042 Tx0313AA [32mINFO[0m generalCheck                    907 protocol general check ret:0
+2024-05-17:21:40:02.043 Tx0313AA [32mINFO[0m localAuthStorageCheck          1279 start update local timestamp
+2024-05-17:21:40:02.047 Tx0313AA [32mINFO[0m setKey                          110 store 8457,8457 license success
+2024-05-17:21:40:02.047 Tx0313AA [32mINFO[0m localAuthStorageCheck          1287 local cached license check ret:0
+2024-05-17:21:40:02.047 Tx0313AA [32mINFO[0m softAuthActivate                883 local cached license parse succeed
+2024-05-17:21:40:02.048 Tx0313CA [32mINFO[0m authFileUpdateMain              474 async check thread start
+2024-05-17:21:40:02.048 Tx0313AA [35mCRIT[0m AEE_Init                        287 AEE_Init ret 0, cost 31.225916 ms
+2024-05-17:21:40:02.048 Tx0313AA [32mINFO[0m loadEngine                      220 loading engine: ef7d69542, versionIdx: 0, libname: ef7d69542_v1009_aee.so
+2024-05-17:21:40:02.049 Tx0313AA [32mINFO[0m formatV2                        445 ValidLen:4026,PayLen:3470,SigLen:512,SchemaLen:2138,RelationLen:36,LicenseLen:1290,ConfigLen:0
+2024-05-17:21:40:02.051 Tx0313AA [32mINFO[0m init                            645 parser init ret:0
+2024-05-17:21:40:02.052 Tx0313AA [35mCRIT[0m AEE_EngineInit                  346 AEE_EngineInit:e867a88f2 ret 0
+AIKIT_LoadData start!
+2024-05-17:21:40:02.052 Tx0313AA [32mINFO[0m init                             65 ability:e867a88f2 init success
+2024-05-17:21:40:02.060 Tx0313AA [33mWARN[0m getResourceFilePath             408 can't find full-matched resource, resource:IVW_KEYWORD_1, version:1.0.1, use partial-matched path: ./src/voice_pkg/src/kedaxunfei_ivw/resource/IVW_KEYWORD_1
+2024-05-17:21:40:02.060 Tx0313AA [32mINFO[0m loadCommonResource               94 load resource:IVW_KEYWORD_1, id:0, version:1.0.1, path:./src/voice_pkg/src/kedaxunfei_ivw/resource/IVW_KEYWORD_1
+2024-05-17:21:40:02.060 Tx0313AA [32mINFO[0m formatV2                        445 ValidLen:4026,PayLen:3470,SigLen:512,SchemaLen:2138,RelationLen:36,LicenseLen:1290,ConfigLen:0
+2024-05-17:21:40:02.061 Tx0313AA [32mINFO[0m init                            645 parser init ret:0
+2024-05-17:21:40:02.065 Tx0313AA [33mWARN[0m getResourceFilePath             408 can't find full-matched resource, resource:IVW_MLP_1, version:1.0.2, use partial-matched path: ./src/voice_pkg/src/kedaxunfei_ivw/resource/IVW_MLP_1
+2024-05-17:21:40:02.065 Tx0313AA [32mINFO[0m loadCommonResource               94 load resource:IVW_MLP_1, id:1, version:1.0.2, path:./src/voice_pkg/src/kedaxunfei_ivw/resource/IVW_MLP_1
+2024-05-17:21:40:02.066 Tx0313AA [32mINFO[0m formatV2                        445 ValidLen:4026,PayLen:3470,SigLen:512,SchemaLen:2138,RelationLen:36,LicenseLen:1290,ConfigLen:0
+2024-05-17:21:40:02.066 Tx0313AA [32mINFO[0m init                            645 parser init ret:0
+2024-05-17:21:40:02.077 Tx0313AA [33mWARN[0m getResourceFilePath             408 can't find full-matched resource, resource:IVW_FILLER_1, version:1.0.2, use partial-matched path: ./src/voice_pkg/src/kedaxunfei_ivw/resource/IVW_FILLER_1
+2024-05-17:21:40:02.077 Tx0313AA [32mINFO[0m loadCommonResource               94 load resource:IVW_FILLER_1, id:2, version:1.0.2, path:./src/voice_pkg/src/kedaxunfei_ivw/resource/IVW_FILLER_1
+2024-05-17:21:40:02.077 Tx0313AA [32mINFO[0m formatV2                        445 ValidLen:4026,PayLen:3470,SigLen:512,SchemaLen:2138,RelationLen:36,LicenseLen:1290,ConfigLen:0
+2024-05-17:21:40:02.078 Tx0313AA [32mINFO[0m init                            645 parser init ret:0
+2024-05-17:21:40:02.081 Tx0313AA [35mCRIT[0m AEE_LoadData                    496 AEE_LoadData:e867a88f2 ret 0
+AIKIT_LoadData end!
+AIKIT_LoadData:0
+2024-05-17:21:40:02.081 Tx0313AA [35mCRIT[0m AEE_SpecifyDataSet              723 AEE_SpecifyDataSet:e867a88f2 ret 0
+AIKIT_SpecifyDataSet:0
+2024-05-17:21:40:02.081 Tx0313AA [32mINFO[0m AEE_Start                       764 start a new session , type is 4
+2024-05-17:21:40:02.084 Tx0313AA [33mWARN[0m getResourceFilePath             408 can't find full-matched resource, resource:IVW_GRAM_1, version:1.0.2, use partial-matched path: ./src/voice_pkg/src/kedaxunfei_ivw/resource/IVW_GRAM_1
+2024-05-17:21:40:02.084 Tx0313AA [32mINFO[0m loadParamResource               146 size:1 load resource:./src/voice_pkg/src/kedaxunfei_ivw/resource/IVW_GRAM_1, version: 1.0.2, id is 3
+2024-05-17:21:40:02.085 Tx0313AA [32mINFO[0m formatV2                        445 ValidLen:4026,PayLen:3470,SigLen:512,SchemaLen:2138,RelationLen:36,LicenseLen:1290,ConfigLen:0
+2024-05-17:21:40:02.085 Tx0313AA [32mINFO[0m init                            645 parser init ret:0
+2024-05-17:21:40:02.090 Tx0313CA [32mINFO[0m startOnlineAuthRequest         1296 start async online license activate
+2024-05-17:21:40:02.117 Tx0313CA [32mINFO[0m resolveHost                     454 dns mode:0
+2024-05-17:21:40:02.117 Tx0313CA [33mWARN[0m getNameServerResult             308 cannot find "xns.xf-yun.com"'s IP, ipList is empty
+2024-05-17:21:40:02.124 Tx0313AA [32mINFO[0m loadParamResource               155 resource ./src/voice_pkg/src/kedaxunfei_ivw/resource/IVW_GRAM_1 was loaded!
+2024-05-17:21:40:02.124 Tx0313AA [32mINFO[0m start                           223 Session start:0 e867a88f2 this:0x5579e4df7638
+AIKIT_Start:0
+2024-05-17:21:40:02.177 Tx0313CA [32mINFO[0m getNameServ'voice microphone' is running.
+[0;36mSSH port forwarding started in background.[0m
+[0;36mStarting Clash and Proxy...[0m
+Clash and proxy commands completed successfully.
+[0;36mSetting Microphone Configuration...[0m
+Microphone set successfully.
+Source number found: 1
+Successfully set default source to 1.
+[0;36mAll scripts executed successfully.[0m

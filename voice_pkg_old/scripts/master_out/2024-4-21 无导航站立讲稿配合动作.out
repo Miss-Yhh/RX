@@ -1,0 +1,678 @@
+kuavo@kuavo-NUC12WSKi7:~$ /usr/bin/python3 /home/kuavo/catkin_dt/src/voice_pkg/scripts/master.py
+/home/robot/.local/lib/python3.10/site-packages/langchain/vectorstores/__init__.py:35: LangChainDeprecationWarning: Importing vector stores from langchain is deprecated. Importing from langchain will no longer be supported as of langchain==0.2.0. Please import from langchain-community instead:
+
+`from langchain_community.vectorstores import Chroma`.
+
+To install langchain-community run `pip install -U langchain-community`.
+  warnings.warn(
+加载bge模型 ...
+ GlobalValues--INFO--followings:
+
+{
+    "id": 0,
+    "TAKE_ACTION_QA": false,
+    "TAKE_ACTION_EXPLAIN": true,
+    "FACE_DETECT": false,
+    "OBSTAC_STOP": false,
+    "POSE_DETECT": false,
+    "ARM_ACTION": false,
+    "POSE_DETECT_KEYWORD": "",
+    "Action_from_User": "None",
+    "EXPLAIN_SHOULD_ACTION": true,
+    "TRANSITIONAL_SENTENCE": [
+        "",
+        "接下来，请大家随我一起参观中国航天工程成就部分。",
+        "接下来，请大家随我一起参观人造地球卫星部分。",
+        "接下来，请大家随我一起参观我国的七大系列卫星。"
+    ],
+    "TRANSITIONAL_ACTION": [
+        "",
+        "右手前伸指引",
+        "右手前伸指引",
+        "右手伸手指引"
+    ],
+    "ACTOIN_DICT": {
+        "挥手动作": 0,
+        "礼仪讲解动作": 7,
+        "左手伸手指引": 8,
+        "右手伸手指引": 9,
+        "右手举起比1": 10,
+        "右手举起比2": 11,
+        "右手举起比3": 12,
+        "右手举起比5": 13,
+        "右手举起握拳": 14,
+        "左手平摊讲解动作": 15,
+        "右手平摊讲解动作": 16,
+        "左手前伸指引": 17,
+        "右手前伸指引": 18,
+        "先左后右平摊讲解动作": 19,
+        "双臂平举打开": 20,
+        "恢复行走状态": 21,
+        "礼仪讲解小幅度动作": 22,
+        "左手举起比1": 23,
+        "右手握拳在上左手张开做掌": 24,
+        "右手从1数到3": 25,
+        "右手举起比125": 26
+    },
+    "SENTENCE_SUM": 0,
+    "SENTENCE_INDEX": 0,
+    "MODEL_TASK_TYPE": "chatglm",
+    "MODEL_LLM_ANSWER": "huozi",
+    "MODEL_BAN_OPENAI": false,
+    "STREAM_RETURN": true,
+    "COUNT_OBS": 0,
+    "COUNT_YOLO": 0,
+    "COUNT_FACE": 0,
+    "COUNT_POSE": 0,
+    "LOW_COMPUTER_EXIST": true,
+    "SOUND_INPUT_EXIST": true,
+    "SOUND_OUTPUT_EXIST": true,
+    "DURATION": 2,
+    "THRESHOLD_AUDIO": 8,
+    "info": "GlobalValuesClass Anythin is OK: Hello! Description here.",
+    "is_Navigating": false,
+    "is_Depth_Obstacle": false,
+    "is_Yolo_Obstacle": false,
+    "is_Explaining": false,
+    "is_QAing": false,
+    "is_Interrupted": false,
+    "is_Big_Face_Detected": false,
+    "Big_Face_Area": "LEFT",
+    "Block_Navigation_Thread": false,
+    "Current_Area": "火箭展厅",
+    "Destination_Area": "火箭展厅",
+    "Current_Position": null,
+    "Target_Position": null,
+    "Index_of_Document": 0,
+    "Last_Sentence": "",
+    "Interrupt_Area": null,
+    "Interrupt_Position": null,
+    "Last_Play_Processor": null,
+    "card_id": 0,
+    "SCAN_DIRECTION": "LEFT",
+    "HEAD_ANGLE": "-15",
+    "Stop_Publisher": null,
+    "Arm_Action_Publisher": null,
+    "Last_Area": "火箭展厅",
+    "Origin_Order_of_Visit": [
+        "1号",
+        "2号",
+        "3号",
+        "4号"
+    ],
+    "Current_Order_of_Visit": [
+        "1号",
+        "2号",
+        "3号",
+        "4号"
+    ],
+    "set_THRESHOLD_AUDIO": 5
+}
+
+ GlobalValues--INFO--above:
+
+
+STATUS.card_id:  0
+mic set success!
+GlobalValues---INFO---
+{'id': 0, 'TAKE_ACTION_QA': False, 'TAKE_ACTION_EXPLAIN': True, 'FACE_DETECT': False, 'OBSTAC_STOP': False, 'POSE_DETECT': False, 'ARM_ACTION': False, 'POSE_DETECT_KEYWORD': '', 'Action_from_User': 'None', 'EXPLAIN_SHOULD_ACTION': True, 'TRANSITIONAL_SENTENCE': ['', '接下来，请大家随我一起参观中国航天工程成就部分。', '接下来，请大家随我一起参观人造地球卫星部分。', '接下来，请大家随我一起参观我国的七大系列卫星。'], 'TRANSITIONAL_ACTION': ['', '右手前伸指引', '右手前伸指引', '右手伸手指引'], 'ACTOIN_DICT': {'挥手动作': 0, '礼仪讲解动作': 7, '左手伸手指引': 8, '右手伸手指引': 9, '右手举起比1': 10, '右手举起比2': 11, '右手举起比3': 12, '右手举起比5': 13, '右手举起握拳': 14, '左手平摊讲解动作': 15, '右手平摊讲解动作': 16, '左手前伸指引': 17, '右手前伸指引': 18, '先左后右平摊讲解动作': 19, '双臂平举打开': 20, '恢复行走状态': 21, '礼仪讲解小幅度动作': 22, '左手举起比1': 23, '右手握拳在上左手张开做掌': 24, '右手从1数到3': 25, '右手举起比125': 26}, 'SENTENCE_SUM': 0, 'SENTENCE_INDEX': 0, 'MODEL_TASK_TYPE': 'chatglm', 'MODEL_LLM_ANSWER': 'huozi', 'MODEL_BAN_OPENAI': False, 'STREAM_RETURN': True, 'COUNT_OBS': 0, 'COUNT_YOLO': 0, 'COUNT_FACE': 0, 'COUNT_POSE': 0, 'LOW_COMPUTER_EXIST': True, 'SOUND_INPUT_EXIST': True, 'SOUND_OUTPUT_EXIST': True, 'DURATION': 2, 'THRESHOLD_AUDIO': 8, 'info': 'GlobalValuesClass Anythin is OK: Hello! Description here.', 'is_Navigating': False, 'is_Depth_Obstacle': False, 'is_Yolo_Obstacle': False, 'is_Explaining': False, 'is_QAing': False, 'is_Interrupted': False, 'is_Big_Face_Detected': False, 'Big_Face_Area': 'LEFT', 'Block_Navigation_Thread': False, 'Current_Area': '火箭展厅', 'Destination_Area': '火箭展厅', 'Current_Position': None, 'Target_Position': None, 'Index_of_Document': 0, 'Last_Sentence': '', 'Interrupt_Area': None, 'Interrupt_Position': None, 'Last_Play_Processor': None, 'card_id': 0, 'SCAN_DIRECTION': 'LEFT', 'HEAD_ANGLE': '-15', 'Stop_Publisher': <rospy.topics.Publisher object at 0x74e000eb08e0>, 'Arm_Action_Publisher': None, 'Last_Area': '火箭展厅', 'Origin_Order_of_Visit': ['1号', '2号', '3号', '4号'], 'Current_Order_of_Visit': ['1号', '2号', '3号', '4号'], 'Mask': [False, False, False, False], 'Onehot': [False, False, False, False], 'set_THRESHOLD_AUDIO': 5}
+进入welcome阶段
+打断回调函数接收到打断信号，可以打断
+                                                                                                44444 循环开始等待 2024-04-21 00:39:00.742604
+                                                                                                55555 等待完毕继续 2024-04-21 00:39:00.742874
+Playing WAVE '/home/kuavo/catkin_dt/src/voice_pkg/temp_record/text2speech/hao_de__da_jia_hao__wo_shi_kua_fu__hen_rong_xing_jie_xia_lai_neng_you_wo_dai_ling_da_jia_can_guan_hang_tian_guan__pcm.wav' : Signed 16 bit Little Endian, Rate 16000 Hz, Mono
+/home/kuavo/catkin_dt/src/voice_pkg/temp_record/text2speech/_pcm.wav: No such file or directory
+
+执行去往 0 号目标点的导航
+
+执行位于 0 号目标点的讲解
+                                                                                                22222 刚刚进入线程 2024-04-21 00:39:07.404711
+*: -------------------------发送动作数字: 7
+*: pre send:  2024-04-21 00:39:07.406289
+*: post send:  2024-04-21 00:39:09.646392
+*: 动作执行完成: 7
+*: 返回值: flag: True
+                                                                                                44444 循环开始等待 2024-04-21 00:39:09.646547
+                                                                                                55555 等待完毕继续 2024-04-21 00:39:09.646578
+0: 发送文本到喇叭: 首先，在我左手边的是东方红一号卫星。
+                                                                                                11111 线程代码之后 2024-04-21 00:39:09.798064
+                                                                                                22222 刚刚进入线程 2024-04-21 00:39:09.798111
+0: -------------------------发送动作数字: 8
+0: pre send:  2024-04-21 00:39:09.799761
+Playing WAVE '/home/kuavo/catkin_dt/src/voice_pkg/temp_record/text2speech/shou_xian__zai_wo_zuo_shou_bian_de_shi_dong_fang_hong_yi_hao_wei_xing__pcm.wav' : Signed 16 bit Little Endian, Rate 16000 Hz, Mono
+                                                                                                33333 睡眠一下之后 2024-04-21 00:39:09.948177
+                                                                                                44444 循环开始等待 2024-04-21 00:39:09.948258
+                                                                                                      正在做动作，等待
+0: post send:  2024-04-21 00:39:16.276523
+0: 动作执行完成: 8
+0: 返回值: flag: True
+                                                                                                55555 等待完毕继续 2024-04-21 00:39:16.292155
+1: 发送文本到喇叭: “东方红，太阳升……”当中国的第一颗人造卫星东方红一号进入太空，
+                                                                                                11111 线程代码之后 2024-04-21 00:39:16.443609
+                                                                                                22222 刚刚进入线程 2024-04-21 00:39:16.443666
+1: -------------------------发送动作数字: 7
+1: pre send:  2024-04-21 00:39:16.445579
+Playing WAVE '/home/kuavo/catkin_dt/src/voice_pkg/temp_record/text2speech/_dong_fang_hong__tai_yang_sheng__dang_zhong_guo_de_di_yi_ke_ren_zao_wei_xing_dong_fang_hong_yi_hao_jin_ru_tai_kong__pcm.wav' : Signed 16 bit Little Endian, Rate 16000 Hz, Mono
+                                                                                                33333 睡眠一下之后 2024-04-21 00:39:16.594049
+                                                                                                44444 循环开始等待 2024-04-21 00:39:16.594260
+                                                                                                55555 等待完毕继续 2024-04-21 00:39:16.594290
+1: post send:  2024-04-21 00:39:18.769403
+1: 动作执行完成: 7
+1: 返回值: flag: True
+Playing WAVE '/home/kuavo/catkin_dt/src/voice_pkg/temp_record/text2speech/dang__dong_fang_hong__de_yue_qu_xiang_che_huan_yu__zhong_guo_cong_ci_zou_jin_le_tai_kong_shi_dai__pcm.wav' : Signed 16 bit Little Endian, Rate 16000 Hz, Mono
+2: 发送文本到喇叭: 当《东方红》的乐曲响彻寰宇，中国从此走进了太空时代，
+2: -------------------------没有动作
+                                                                                                44444 循环开始等待 2024-04-21 00:39:22.751283
+                                                                                                55555 等待完毕继续 2024-04-21 00:39:22.751337
+Playing WAVE '/home/kuavo/catkin_dt/src/voice_pkg/temp_record/text2speech/kai_qi_le_zhong_guo_hang_tian_shi_ye_de_xin_ji_yuan__pcm.wav' : Signed 16 bit Little Endian, Rate 16000 Hz, Mono
+3: 发送文本到喇叭: 开启了中国航天事业的新纪元。
+3: -------------------------没有动作
+                                                                                                44444 循环开始等待 2024-04-21 00:39:27.907998
+                                                                                                55555 等待完毕继续 2024-04-21 00:39:27.908026
+Playing WAVE '/home/kuavo/catkin_dt/src/voice_pkg/temp_record/text2speech/1965_nian_5_yue_6_ri__pcm.wav' : Signed 16 bit Little Endian, Rate 16000 Hz, Mono
+4: 发送文本到喇叭:  1965年5月6日，
+                                                                                                11111 线程代码之后 2024-04-21 00:39:31.062896
+                                                                                                22222 刚刚进入线程 2024-04-21 00:39:31.062937
+4: -------------------------发送动作数字: 19
+4: pre send:  2024-04-21 00:39:31.064640
+                                                                                                33333 睡眠一下之后 2024-04-21 00:39:31.213092
+                                                                                                44444 循环开始等待 2024-04-21 00:39:31.213155
+                                                                                                55555 等待完毕继续 2024-04-21 00:39:31.213165
+Playing WAVE '/home/kuavo/catkin_dt/src/voice_pkg/temp_record/text2speech/zhong_yang_zhuan_wei_di_shi_er_ci_hui_yi_jue_ding_jiang_ren_zao_wei_xing_lie_ru_guo_jia_ji_hua__pcm.wav' : Signed 16 bit Little Endian, Rate 16000 Hz, Mono
+5: 发送文本到喇叭: 中央专委第十二次会议决定将人造卫星列入国家计划，
+5: -------------------------没有动作
+                                                                                                44444 循环开始等待 2024-04-21 00:39:33.366781
+                                                                                                55555 等待完毕继续 2024-04-21 00:39:33.366858
+4: post send:  2024-04-21 00:39:37.712328
+4: 动作执行完成: 19
+4: 返回值: flag: True
+Playing WAVE '/home/kuavo/catkin_dt/src/voice_pkg/temp_record/text2speech/dai_hao_651_ren_wu_1970_nian_4_yue_24_ri_dong_fang_hong_yi_hao_wei_xing_da_zai_zai_chang_zheng_yi_hao_yun_zai_huo_jian_shang_cong_zhong_guo_jiu_quan_wei_xing_fa_she_zhong_xin_cheng_gong_fa_she__pcm.wav' : Signed 16 bit Little Endian, Rate 16000 Hz, Mono
+6: 发送文本到喇叭: 代号“651任务”。1970年4月24日东方红一号卫星搭载在长征一号运载火箭上从中国酒泉卫星发射中心成功发射。
+6: -------------------------没有动作
+                                                                                                44444 循环开始等待 2024-04-21 00:39:38.523381
+                                                                                                55555 等待完毕继续 2024-04-21 00:39:38.523408
+Playing WAVE '/home/kuavo/catkin_dt/src/voice_pkg/temp_record/text2speech/zhe_ke_dong_fang_hong_yi_hao_wei_xing_mo_xing_zhong__pcm.wav' : Signed 16 bit Little Endian, Rate 16000 Hz, Mono
+7: 发送文本到喇叭: 这颗东方红一号卫星模型中，
+                                                                                                11111 线程代码之后 2024-04-21 00:39:49.186128
+                                                                                                22222 刚刚进入线程 2024-04-21 00:39:49.186165
+7: -------------------------发送动作数字: 8
+7: pre send:  2024-04-21 00:39:49.187307
+                                                                                                33333 睡眠一下之后 2024-04-21 00:39:49.336255
+                                                                                                44444 循环开始等待 2024-04-21 00:39:49.336284
+                                                                                                55555 等待完毕继续 2024-04-21 00:39:49.336289
+Playing WAVE '/home/kuavo/catkin_dt/src/voice_pkg/temp_record/text2speech/you_yi_gen_tian_xian_wei_shi_wu__yin_wei_wo_guo_dang_shi_gong_zuo_le_5_ke_yang_xing__pcm.wav' : Signed 16 bit Little Endian, Rate 16000 Hz, Mono
+8: 发送文本到喇叭: 有一根天线为实物，因为我国当时共做了5颗样星，
+8: -------------------------没有动作
+                                                                                                44444 循环开始等待 2024-04-21 00:39:51.990214
+                                                                                                      正在做动作，等待
+7: post send:  2024-04-21 00:39:55.645303
+7: 动作执行完成: 8
+7: 返回值: flag: True
+                                                                                                55555 等待完毕继续 2024-04-21 00:39:55.660840
+Playing WAVE '/home/kuavo/catkin_dt/src/voice_pkg/temp_record/text2speech/di_yi_ke_wei_xing_jiu_fa_she_cheng_gong__pcm.wav' : Signed 16 bit Little Endian, Rate 16000 Hz, Mono
+9: 发送文本到喇叭: 第一颗卫星就发射成功，
+                                                                                                11111 线程代码之后 2024-04-21 00:39:56.312413
+                                                                                                22222 刚刚进入线程 2024-04-21 00:39:56.312436
+9: -------------------------发送动作数字: 10
+9: pre send:  2024-04-21 00:39:56.313523
+                                                                                                33333 睡眠一下之后 2024-04-21 00:39:56.462690
+                                                                                                44444 循环开始等待 2024-04-21 00:39:56.462715
+                                                                                                55555 等待完毕继续 2024-04-21 00:39:56.462721
+Playing WAVE '/home/kuavo/catkin_dt/src/voice_pkg/temp_record/text2speech/suo_yi_ke_yi_bao_cun_yi_gen_shi_wu_tian_xian__pcm.wav' : Signed 16 bit Little Endian, Rate 16000 Hz, Mono
+10: 发送文本到喇叭: 所以可以保存一根实物天线。
+10: -------------------------没有动作
+                                                                                                44444 循环开始等待 2024-04-21 00:39:59.116765
+                                                                                                      正在做动作，等待
+9: post send:  2024-04-21 00:40:01.482571
+9: 动作执行完成: 10
+9: 返回值: flag: True
+                                                                                                55555 等待完毕继续 2024-04-21 00:40:01.492766
+Playing WAVE '/home/kuavo/catkin_dt/src/voice_pkg/temp_record/text2speech/dong_fang_hong_yi_hao_wei_xing_you_yi_qian_xue_sen_wei_shou_ren_yuan_zhang_de_zhong_guo_kong_jian_ji_shu_yan_jiu_yuan_yan_zhi__pcm.wav' : Signed 16 bit Little Endian, Rate 16000 Hz, Mono
+11: 发送文本到喇叭: 东方红一号卫星由以钱学森为首任院长的中国空间技术研究院研制,
+                                                                                                11111 线程代码之后 2024-04-21 00:40:02.144454
+                                                                                                22222 刚刚进入线程 2024-04-21 00:40:02.144564
+11: -------------------------发送动作数字: 8
+11: pre send:  2024-04-21 00:40:02.145863
+                                                                                                33333 睡眠一下之后 2024-04-21 00:40:02.294750
+                                                                                                44444 循环开始等待 2024-04-21 00:40:02.294779
+                                                                                                55555 等待完毕继续 2024-04-21 00:40:02.294784
+Playing WAVE '/home/kuavo/catkin_dt/src/voice_pkg/temp_record/text2speech/liang_dan_yi_xing_gong_xun_ke_xue_jia__wo_xiao_xiao_you_sun_jia_dong_yuan_shi__can_yu_le_dong_fang_hong_yi_hao_wei_xing_de_yan_zhi_he_fa_she_gong_zuo__pcm.wav' : Signed 16 bit Little Endian, Rate 16000 Hz, Mono
+12: 发送文本到喇叭: 两弹一星功勋科学家、 我校校友孙家栋院士 参与了东方红一号卫星的研制和发射工作。
+12: -------------------------没有动作
+                                                                                                44444 循环开始等待 2024-04-21 00:40:07.951801
+                                                                                                      正在做动作，等待
+11: post send:  2024-04-21 00:40:08.754727
+11: 动作执行完成: 8
+11: 返回值: flag: True
+                                                                                                55555 等待完毕继续 2024-04-21 00:40:08.769982
+receive msg,but parse exception: argument should be a bytes-like object or ASCII string, not 'NoneType' 2024-04-21 00:40:10.054549
+### closed ### 2024-04-21 00:40:10.079116
+-------tts is over----------
+Playing WAVE '/home/kuavo/catkin_dt/src/voice_pkg/temp_record/text2speech/dong_fang_hong_yi_hao_wei_xing_fa_she_shou__hu_shi_xiang_zhong_jiang_ye_tong_wei_wo_xiao_xiao_you__pcm.wav' : Signed 16 bit Little Endian, Rate 16000 Hz, Mono
+13: 发送文本到喇叭: 东方红一号卫星发射手 胡世祥中将也同为我校校友。
+                                                                                                11111 线程代码之后 2024-04-21 00:40:15.465497
+                                                                                                22222 刚刚进入线程 2024-04-21 00:40:15.465599
+13: -------------------------发送动作数字: 17
+13: pre send:  2024-04-21 00:40:15.466885
+                                                                                                33333 睡眠一下之后 2024-04-21 00:40:15.615783
+                                                                                                44444 循环开始等待 2024-04-21 00:40:15.615809
+                                                                                                      正在做动作，等待
+13: post send:  2024-04-21 00:40:20.406006
+13: 动作执行完成: 17
+13: 返回值: flag: True
+                                                                                                55555 等待完毕继续 2024-04-21 00:40:20.421495
+Playing WAVE '/home/kuavo/catkin_dt/src/voice_pkg/temp_record/text2speech/zai_wo_you_shou_bian_zhan_ban_shang_zhan_xian_de__pcm.wav' : Signed 16 bit Little Endian, Rate 16000 Hz, Mono
+14: 发送文本到喇叭: 在我右手边展板上展现的，
+                                                                                                11111 线程代码之后 2024-04-21 00:40:20.572514
+                                                                                                22222 刚刚进入线程 2024-04-21 00:40:20.572650
+14: -------------------------发送动作数字: 9
+14: pre send:  2024-04-21 00:40:20.573985
+                                                                                                33333 睡眠一下之后 2024-04-21 00:40:20.722786
+                                                                                                44444 循环开始等待 2024-04-21 00:40:20.722812
+                                                                                                55555 等待完毕继续 2024-04-21 00:40:20.722817
+Playing WAVE '/home/kuavo/catkin_dt/src/voice_pkg/temp_record/text2speech/shi_wei_wo_guo__liang_dan_yi_xing__shi_ye_zuo_chu_tu_chu_gong_xian_de_23_wei_ke_ji_zhuan_jia__pcm.wav' : Signed 16 bit Little Endian, Rate 16000 Hz, Mono
+15: 发送文本到喇叭: 是为我国“ 两弹一星 ”事业作出突出贡献的 23位科技专家。
+15: -------------------------没有动作
+                                                                                                44444 循环开始等待 2024-04-21 00:40:23.376754
+                                                                                                55555 等待完毕继续 2024-04-21 00:40:23.376769
+14: post send:  2024-04-21 00:40:24.099178
+14: 动作执行完成: 9
+14: 返回值: flag: True
+Playing WAVE '/home/kuavo/catkin_dt/src/voice_pkg/temp_record/text2speech/1999_nian_9_yue_18_ri__dang_zhong_yang__guo_wu_yuan__zhong_yang_jun_wei_dui_shang_shu_ke_ji_zhuan_jia_jin_xing_long_zhong_biao_zhang__pcm.wav' : Signed 16 bit Little Endian, Rate 16000 Hz, Mono
+16: 发送文本到喇叭: 1999年9月18日，党中央、国务院、中央军委对上述科技专家进行隆重表彰，
+16: -------------------------没有动作
+                                                                                                44444 循环开始等待 2024-04-21 00:40:29.534905
+                                                                                                55555 等待完毕继续 2024-04-21 00:40:29.534919
+Playing WAVE '/home/kuavo/catkin_dt/src/voice_pkg/temp_record/text2speech/_qi_zhong_bao_kuo_wo_xiao_xiao_you__yun_zai_huo_jian_he_wei_xing_ji_shu_zhuan_jia_sun_jia_dong_yuan_shi__pcm.wav' : Signed 16 bit Little Endian, Rate 16000 Hz, Mono
+17: 发送文本到喇叭:  其中包括我校校友 运载火箭和卫星技术专家孙家栋院士。
+                                                                                                11111 线程代码之后 2024-04-21 00:40:36.694095
+                                                                                                22222 刚刚进入线程 2024-04-21 00:40:36.694197
+17: -------------------------发送动作数字: 23
+17: pre send:  2024-04-21 00:40:36.695493
+                                                                                                33333 睡眠一下之后 2024-04-21 00:40:36.844136
+                                                                                                44444 循环开始等待 2024-04-21 00:40:36.844168
+                                                                                                55555 等待完毕继续 2024-04-21 00:40:36.844173
+Playing WAVE '/home/kuavo/catkin_dt/src/voice_pkg/temp_record/text2speech/dong_fang_hong_yi_hao_wei_xing_de_cheng_gong_fa_she_shi_zhong_guo_cheng_wei_shi_jie_shang_ji_su_lian__mei_guo__fa_guo_he_ri_ben_zhi_hou__pcm.wav' : Signed 16 bit Little Endian, Rate 16000 Hz, Mono
+18: 发送文本到喇叭: 东方红一号卫星的成功发射使中国成为世界上继苏联、美国、法国和日本之后，
+18: -------------------------没有动作
+                                                                                                44444 循环开始等待 2024-04-21 00:40:42.000844
+                                                                                                      正在做动作，等待
+17: post send:  2024-04-21 00:40:43.177382
+17: 动作执行完成: 23
+17: 返回值: flag: True
+                                                                                                55555 等待完毕继续 2024-04-21 00:40:43.177463
+Playing WAVE '/home/kuavo/catkin_dt/src/voice_pkg/temp_record/text2speech/di_wu_ge_wan_quan_yi_kao_zi_ji_de_li_liang_cheng_gong_fa_she_ren_zao_wei_xing_de_guo_jia__pcm.wav' : Signed 16 bit Little Endian, Rate 16000 Hz, Mono
+19: 发送文本到喇叭: 第五个完全依靠自己的力量成功发射人造卫星的国家。
+                                                                                                11111 线程代码之后 2024-04-21 00:40:48.835291
+                                                                                                22222 刚刚进入线程 2024-04-21 00:40:48.835395
+19: -------------------------发送动作数字: 13
+19: pre send:  2024-04-21 00:40:48.836657
+                                                                                                33333 睡眠一下之后 2024-04-21 00:40:48.985591
+                                                                                                44444 循环开始等待 2024-04-21 00:40:48.985616
+                                                                                                      正在做动作，等待
+19: post send:  2024-04-21 00:40:53.949918
+19: 动作执行完成: 13
+19: 返回值: flag: True
+                                                                                                55555 等待完毕继续 2024-04-21 00:40:53.965184
+Playing WAVE '/home/kuavo/catkin_dt/src/voice_pkg/temp_record/text2speech/2016_nian_3_yue_8_ri__guo_wu_yuan_pi_fu_jiang_mei_nian_de_4_yue_24_ri_she_li_wei_zhong_guo_hang_tian_ri__pcm.wav' : Signed 16 bit Little Endian, Rate 16000 Hz, Mono
+20: 发送文本到喇叭: 2016年3月8日 国务院批复将每年的4月24日设立为中国航天日。
+                                                                                                11111 线程代码之后 2024-04-21 00:40:54.116119
+                                                                                                22222 刚刚进入线程 2024-04-21 00:40:54.116146
+20: -------------------------发送动作数字: 19
+20: pre send:  2024-04-21 00:40:54.117434
+                                                                                                33333 睡眠一下之后 2024-04-21 00:40:54.266339
+
+if_success_explain:  True
+                                                                                                44444 循环开始等待 2024-04-21 00:40:54.266389
+                                                                                                      正在做动作，等待
+20: post send:  2024-04-21 00:41:00.682574
+20: 动作执行完成: 19
+20: 返回值: flag: True
+                                                                                                55555 等待完毕继续 2024-04-21 00:41:00.697997
+Playing WAVE '/home/kuavo/catkin_dt/src/voice_pkg/temp_record/text2speech/jie_xia_lai__qing_da_jia_sui_wo_yi_qi_can_guan_zhong_guo_hang_tian_gong_cheng_cheng_jiu_bu_fen__pcm.wav' : Signed 16 bit Little Endian, Rate 16000 Hz, Mono
+                                                                                                22222 刚刚进入线程 2024-04-21 00:41:00.848949
+*: -------------------------发送动作数字: 18
+*: pre send:  2024-04-21 00:41:00.850256
+*: post send:  2024-04-21 00:41:04.397371
+*: 动作执行完成: 18
+*: 返回值: flag: True
+
+执行去往 1 号目标点的导航
+
+执行位于 1 号目标点的讲解
+                                                                                                22222 刚刚进入线程 2024-04-21 00:41:04.398572
+*: -------------------------发送动作数字: 7
+*: pre send:  2024-04-21 00:41:04.399955
+*: post send:  2024-04-21 00:41:06.707451
+*: 动作执行完成: 7
+*: 返回值: flag: True
+                                                                                                44444 循环开始等待 2024-04-21 00:41:06.707514
+                                                                                                55555 等待完毕继续 2024-04-21 00:41:06.707519
+Playing WAVE '/home/kuavo/catkin_dt/src/voice_pkg/temp_record/text2speech/wo_guo_yun_zai_huo_jian_de_yan_zhi_qi_bu_yu_20_shi_ji_60_nian_dai__pcm.wav' : Signed 16 bit Little Endian, Rate 16000 Hz, Mono
+0: 发送文本到喇叭: 我国运载火箭的研制起步于20世纪60年代，
+                                                                                                11111 线程代码之后 2024-04-21 00:41:06.858518
+                                                                                                22222 刚刚进入线程 2024-04-21 00:41:06.858617
+0: -------------------------发送动作数字: 7
+0: pre send:  2024-04-21 00:41:06.859997
+                                                                                                33333 睡眠一下之后 2024-04-21 00:41:07.008789
+                                                                                                44444 循环开始等待 2024-04-21 00:41:07.008818
+                                                                                                      正在做动作，等待
+0: post send:  2024-04-21 00:41:09.057700
+0: 动作执行完成: 7
+0: 返回值: flag: True
+                                                                                                55555 等待完毕继续 2024-04-21 00:41:09.072948
+Playing WAVE '/home/kuavo/catkin_dt/src/voice_pkg/temp_record/text2speech/da_zai_dong_fang_hong_yi_hao_ren_zao_wei_xing_de_jiu_shi_chang_zheng_yi_hao_huo_jian__pcm.wav' : Signed 16 bit Little Endian, Rate 16000 Hz, Mono
+1: 发送文本到喇叭: 搭载东方红一号人造卫星的就是长征一号火箭。
+                                                                                                11111 线程代码之后 2024-04-21 00:41:11.226528
+                                                                                                22222 刚刚进入线程 2024-04-21 00:41:11.226627
+1: -------------------------发送动作数字: 10
+1: pre send:  2024-04-21 00:41:11.227910
+                                                                                                33333 睡眠一下之后 2024-04-21 00:41:11.376736
+                                                                                                44444 循环开始等待 2024-04-21 00:41:11.376768
+                                                                                                55555 等待完毕继续 2024-04-21 00:41:11.376774
+Playing WAVE '/home/kuavo/catkin_dt/src/voice_pkg/temp_record/text2speech/she_ji_zhe_you_gan_yu_mao_zhu_xi_zhu_ming_de__qi_lv__chang_zheng__zhong_biao_xian_chu_lai_de_hong_jun_wei_shi_xian_ge_ming_mu_biao__pcm.wav' : Signed 16 bit Little Endian, Rate 16000 Hz, Mono
+2: 发送文本到喇叭: 设计者有感于毛主席著名的《七律·长征》中表现出来的红军为实现革命目标，
+2: -------------------------没有动作
+                                                                                                44444 循环开始等待 2024-04-21 00:41:15.532683
+                                                                                                      正在做动作，等待
+1: post send:  2024-04-21 00:41:16.247993
+1: 动作执行完成: 10
+1: 返回值: flag: True
+                                                                                                55555 等待完毕继续 2024-04-21 00:41:16.263381
+Playing WAVE '/home/kuavo/catkin_dt/src/voice_pkg/temp_record/text2speech/miao_shi_yi_qie_kun_nan__yong_wang_zhi_qian__bu_pa_xi_sheng_de_da_wu_wei_jing_shen__pcm.wav' : Signed 16 bit Little Endian, Rate 16000 Hz, Mono
+3: 发送文本到喇叭: 藐视一切困难、勇往直前、不怕牺牲的大无畏精神，
+                                                                                                11111 线程代码之后 2024-04-21 00:41:22.421671
+                                                                                                22222 刚刚进入线程 2024-04-21 00:41:22.421788
+3: -------------------------发送动作数字: 24
+3: pre send:  2024-04-21 00:41:22.423149
+                                                                                                33333 睡眠一下之后 2024-04-21 00:41:22.571950
+                                                                                                44444 循环开始等待 2024-04-21 00:41:22.571983
+                                                                                                55555 等待完毕继续 2024-04-21 00:41:22.571988
+Playing WAVE '/home/kuavo/catkin_dt/src/voice_pkg/temp_record/text2speech/jiang_huo_jian_ming_ming_wei__chang_zheng__yu_yi_wo_guo_huo_jian_shi_ye_yi_ding_hui_xiang_hong_jun_chang_zheng_yi_yang__pcm.wav' : Signed 16 bit Little Endian, Rate 16000 Hz, Mono
+4: 发送文本到喇叭: 将火箭命名为“长征”，寓意我国火箭事业一定会像红军长征一样，
+4: -------------------------没有动作
+                                                                                                44444 循环开始等待 2024-04-21 00:41:26.727116
+                                                                                                55555 等待完毕继续 2024-04-21 00:41:26.727134
+3: post send:  2024-04-21 00:41:30.306412
+3: 动作执行完成: 24
+3: 返回值: flag: True
+Playing WAVE '/home/kuavo/catkin_dt/src/voice_pkg/temp_record/text2speech/ke_fu_ren_he_jian_nan_xian_zu__dao_da_sheng_li_bi_an__pcm.wav' : Signed 16 bit Little Endian, Rate 16000 Hz, Mono
+5: 发送文本到喇叭: 克服任何艰难险阻，到达胜利彼岸。
+5: -------------------------没有动作
+                                                                                                44444 循环开始等待 2024-04-21 00:41:32.385030
+                                                                                                55555 等待完毕继续 2024-04-21 00:41:32.385046
+Playing WAVE '/home/kuavo/catkin_dt/src/voice_pkg/temp_record/text2speech/zai_wo_zheng_dui_mian_de_shi_yun_zai_huo_jian_de_cang_duan__zheng_liu_zhao_he_huo_jian_ran_liao_chu_xiang__jun_wei_shi_wu__pcm.wav' : Signed 16 bit Little Endian, Rate 16000 Hz, Mono
+6: 发送文本到喇叭: 在我正对面的是运载火箭的舱段、整流罩和火箭燃料储箱 均为实物。
+                                                                                                11111 线程代码之后 2024-04-21 00:41:36.040589
+                                                                                                22222 刚刚进入线程 2024-04-21 00:41:36.040721
+6: -------------------------发送动作数字: 17
+6: pre send:  2024-04-21 00:41:36.041906
+                                                                                                33333 睡眠一下之后 2024-04-21 00:41:36.190775
+                                                                                                44444 循环开始等待 2024-04-21 00:41:36.190808
+                                                                                                      正在做动作，等待
+6: post send:  2024-04-21 00:41:40.927591
+6: 动作执行完成: 17
+6: 返回值: flag: True
+                                                                                                55555 等待完毕继续 2024-04-21 00:41:40.937863
+Playing WAVE '/home/kuavo/catkin_dt/src/voice_pkg/temp_record/text2speech/zai_wo_bei_hou_de_shi_zhong_guo_yan_zhi_de__chang_zheng_xi_lie__yun_zai_huo_jian_jia_zu_mo_xing__pcm.wav' : Signed 16 bit Little Endian, Rate 16000 Hz, Mono
+7: 发送文本到喇叭: 在我背后的是中国研制的“长征系列”运载火箭家族模型。
+                                                                                                11111 线程代码之后 2024-04-21 00:41:42.090221
+                                                                                                22222 刚刚进入线程 2024-04-21 00:41:42.090319
+7: -------------------------发送动作数字: 20
+7: pre send:  2024-04-21 00:41:42.091585
+                                                                                                33333 睡眠一下之后 2024-04-21 00:41:42.240438
+                                                                                                44444 循环开始等待 2024-04-21 00:41:42.240471
+                                                                                                      正在做动作，等待
+7: post send:  2024-04-21 00:41:47.291695
+7: 动作执行完成: 20
+7: 返回值: flag: True
+                                                                                                55555 等待完毕继续 2024-04-21 00:41:47.296817
+Playing WAVE '/home/kuavo/catkin_dt/src/voice_pkg/temp_record/text2speech/_chang_zheng_yi_hao__shi_wo_guo_di_yi_zhong_yun_zai_huo_jian_xing_hao__pcm.wav' : Signed 16 bit Little Endian, Rate 16000 Hz, Mono
+8: 发送文本到喇叭: “长征一号” 是我国第一种运载火箭型号，
+                                                                                                11111 线程代码之后 2024-04-21 00:41:47.447686
+                                                                                                22222 刚刚进入线程 2024-04-21 00:41:47.447706
+8: -------------------------发送动作数字: 26
+8: pre send:  2024-04-21 00:41:47.448882
+                                                                                                33333 睡眠一下之后 2024-04-21 00:41:47.597891
+                                                                                                44444 循环开始等待 2024-04-21 00:41:47.597923
+                                                                                                55555 等待完毕继续 2024-04-21 00:41:47.597929
+Playing WAVE '/home/kuavo/catkin_dt/src/voice_pkg/temp_record/text2speech/1970_nian_4_yue_24_ri_cheng_gong_di_jiang__dong_fang_hong_yi_hao__wei_xing_song_ru_yu_ding_gui_dao__pcm.wav' : Signed 16 bit Little Endian, Rate 16000 Hz, Mono
+9: 发送文本到喇叭: 1970年4月24日成功地将 “东方红一号”卫星送入预定轨道，
+9: -------------------------没有动作
+                                                                                                44444 循环开始等待 2024-04-21 00:41:51.253201
+                                                                                                55555 等待完毕继续 2024-04-21 00:41:51.253219
+8: post send:  2024-04-21 00:41:54.252442
+8: 动作执行完成: 26
+8: 返回值: flag: True
+Playing WAVE '/home/kuavo/catkin_dt/src/voice_pkg/temp_record/text2speech/dian_ding_le__chang_zheng__xi_lie_huo_jian_fa_zhan_de_ji_chu__pcm.wav' : Signed 16 bit Little Endian, Rate 16000 Hz, Mono
+10: 发送文本到喇叭: 奠定了“长征”系列火箭发展的基础。
+10: -------------------------没有动作
+                                                                                                44444 循环开始等待 2024-04-21 00:41:56.910930
+                                                                                                55555 等待完毕继续 2024-04-21 00:41:56.910956
+Playing WAVE '/home/kuavo/catkin_dt/src/voice_pkg/temp_record/text2speech/_chang_zheng_er_hao__huo_jian_shi_mu_qian_zhong_guo_zui_da_de_yun_zai_huo_jian_jia_zu__pcm.wav' : Signed 16 bit Little Endian, Rate 16000 Hz, Mono
+11: 发送文本到喇叭:  “长征二号”火箭是目前中国最大的运载火箭家族，
+11: -------------------------没有动作
+                                                                                                44444 循环开始等待 2024-04-21 00:42:00.065390
+                                                                                                55555 等待完毕继续 2024-04-21 00:42:00.065407
+Playing WAVE '/home/kuavo/catkin_dt/src/voice_pkg/temp_record/text2speech/zhu_yao_cheng_dan_jin_di_gui_dao_he_tai_yang_tong_bu_gui_dao_de_fa_she_ren_wu__pcm.wav' : Signed 16 bit Little Endian, Rate 16000 Hz, Mono
+12: 发送文本到喇叭: 主要承担近地轨道和太阳同步轨道的发射任务，
+12: -------------------------没有动作
+                                                                                                44444 循环开始等待 2024-04-21 00:42:04.220800
+                                                                                                55555 等待完毕继续 2024-04-21 00:42:04.220815
+Playing WAVE '/home/kuavo/catkin_dt/src/voice_pkg/temp_record/text2speech/shi_zhong_guo_hang_tian_yun_zai_qi_de_ji_chu_xing_hao__chang_zheng_wu_hao__yun_zai_huo_jian_yu_2016_nian_11_yue_3_ri_zai_wen_chang_hang_tian_fa_she_chang_cheng_gong_shou_fei__pcm.wav' : Signed 16 bit Little Endian, Rate 16000 Hz, Mono
+13: 发送文本到喇叭: 是中国航天运载器的基础型号。“长征五号”运载火箭于2016年11月3日在文昌航天发射场成功首飞，
+13: -------------------------没有动作
+                                                                                                44444 循环开始等待 2024-04-21 00:42:08.376133
+                                                                                                55555 等待完毕继续 2024-04-21 00:42:08.376146
+Playing WAVE '/home/kuavo/catkin_dt/src/voice_pkg/temp_record/text2speech/cheng_wei_mu_qian_zhong_guo_yun_zai_neng_li_zui_qiang_de_huo_jian__pcm.wav' : Signed 16 bit Little Endian, Rate 16000 Hz, Mono
+14: 发送文本到喇叭: 成为目前中国运载能力最强的火箭。
+14: -------------------------没有动作
+
+if_success_explain:  True
+                                                                                                44444 循环开始等待 2024-04-21 00:42:18.037881
+                                                                                                55555 等待完毕继续 2024-04-21 00:42:18.037896
+Playing WAVE '/home/kuavo/catkin_dt/src/voice_pkg/temp_record/text2speech/jie_xia_lai__qing_da_jia_sui_wo_yi_qi_can_guan_ren_zao_di_qiu_wei_xing_bu_fen__pcm.wav' : Signed 16 bit Little Endian, Rate 16000 Hz, Mono
+                                                                                                22222 刚刚进入线程 2024-04-21 00:42:21.692945
+*: -------------------------发送动作数字: 18
+*: pre send:  2024-04-21 00:42:21.694153
+*: post send:  2024-04-21 00:42:25.289786
+*: 动作执行完成: 18
+*: 返回值: flag: True
+
+执行去往 2 号目标点的导航
+
+执行位于 2 号目标点的讲解
+                                                                                                22222 刚刚进入线程 2024-04-21 00:42:25.291534
+*: -------------------------发送动作数字: 7
+*: pre send:  2024-04-21 00:42:25.293182
+*: post send:  2024-04-21 00:42:27.637422
+*: 动作执行完成: 7
+*: 返回值: flag: True
+                                                                                                44444 循环开始等待 2024-04-21 00:42:27.637506
+                                                                                                55555 等待完毕继续 2024-04-21 00:42:27.637520
+0: 发送文本到喇叭: 人造地球卫星是环绕地球，
+0: -------------------------没有动作
+                                                                                                44444 循环开始等待 2024-04-21 00:42:27.788629
+                                                                                                55555 等待完毕继续 2024-04-21 00:42:27.788656
+Playing WAVE '/home/kuavo/catkin_dt/src/voice_pkg/temp_record/text2speech/ren_zao_di_qiu_wei_xing_shi_huan_rao_di_qiu__pcm.wav' : Signed 16 bit Little Endian, Rate 16000 Hz, Mono
+Playing WAVE '/home/kuavo/catkin_dt/src/voice_pkg/temp_record/text2speech/zai_kong_jian_gui_dao_shang_yun_xing_de_wu_ren_hang_tian_qi__pcm.wav' : Signed 16 bit Little Endian, Rate 16000 Hz, Mono
+1: 发送文本到喇叭: 在空间轨道上运行的无人航天器，
+                                                                                                11111 线程代码之后 2024-04-21 00:42:30.943238
+                                                                                                22222 刚刚进入线程 2024-04-21 00:42:30.943356
+1: -------------------------发送动作数字: 25
+1: pre send:  2024-04-21 00:42:30.944517
+                                                                                                33333 睡眠一下之后 2024-04-21 00:42:31.093453
+                                                                                                44444 循环开始等待 2024-04-21 00:42:31.093479
+                                                                                                55555 等待完毕继续 2024-04-21 00:42:31.093485
+Playing WAVE '/home/kuavo/catkin_dt/src/voice_pkg/temp_record/text2speech/ye_shi_fa_she_shu_liang_zui_duo__yong_tu_zui_guang__fa_zhan_zui_kuai_de_hang_tian_qi__pcm.wav' : Signed 16 bit Little Endian, Rate 16000 Hz, Mono
+2: 发送文本到喇叭: 也是发射数量最多，用途最广，发展最快的航天器。
+2: -------------------------没有动作
+                                                                                                44444 循环开始等待 2024-04-21 00:42:34.247721
+                                                                                                      正在做动作，等待
+1: post send:  2024-04-21 00:42:39.989157
+1: 动作执行完成: 25
+1: 返回值: flag: True
+                                                                                                55555 等待完毕继续 2024-04-21 00:42:40.004673
+Playing WAVE '/home/kuavo/catkin_dt/src/voice_pkg/temp_record/text2speech/zi_1970_nian_4_yue_24_ri__pcm.wav' : Signed 16 bit Little Endian, Rate 16000 Hz, Mono
+3: 发送文本到喇叭: 自1970年4月24日，
+                                                                                                11111 线程代码之后 2024-04-21 00:42:40.155686
+                                                                                                22222 刚刚进入线程 2024-04-21 00:42:40.155821
+3: -------------------------发送动作数字: 22
+3: pre send:  2024-04-21 00:42:40.157059
+                                                                                                33333 睡眠一下之后 2024-04-21 00:42:40.305959
+                                                                                                44444 循环开始等待 2024-04-21 00:42:40.305989
+                                                                                                55555 等待完毕继续 2024-04-21 00:42:40.305994
+Playing WAVE '/home/kuavo/catkin_dt/src/voice_pkg/temp_record/text2speech/cheng_gong_fa_she_di_yi_ke_ren_zao_wei_xing_qi__wo_guo_yi_xing_cheng_7_ge_wei_xing_xi_lie__pcm.wav' : Signed 16 bit Little Endian, Rate 16000 Hz, Mono
+4: 发送文本到喇叭: 成功发射第一颗人造卫星起，我国已形成7个卫星系列。
+4: -------------------------没有动作
+                                                                                                44444 循环开始等待 2024-04-21 00:42:42.960066
+                                                                                                55555 等待完毕继续 2024-04-21 00:42:42.960080
+Playing WAVE '/home/kuavo/catkin_dt/src/voice_pkg/temp_record/text2speech/fen_bie_shi_fan_hui_shi_yao_gan__ke_xue_ji_shu_shi_yan__guang_bo_tong_xin__qi_xiang__di_qiu_zi_yuan__dao_hang_ding_wei_he_hai_yang__pcm.wav' : Signed 16 bit Little Endian, Rate 16000 Hz, Mono
+5: 发送文本到喇叭: 分别是返回式遥感、科学技术试验、广播通信、气象、地球资源、导航定位和海洋。
+5: -------------------------没有动作
+
+if_success_explain:  True
+                                                                                                44444 循环开始等待 2024-04-21 00:42:48.117265
+                                                                                                      正在做动作，等待
+3: post send:  2024-04-21 00:42:49.759584
+3: 动作执行完成: 22
+3: 返回值: flag: True
+                                                                                                55555 等待完毕继续 2024-04-21 00:42:49.775101
+Playing WAVE '/home/kuavo/catkin_dt/src/voice_pkg/temp_record/text2speech/jie_xia_lai__qing_da_jia_sui_wo_yi_qi_can_guan_wo_guo_de_qi_da_xi_lie_wei_xing__pcm.wav' : Signed 16 bit Little Endian, Rate 16000 Hz, Mono
+                                                                                                22222 刚刚进入线程 2024-04-21 00:42:55.432388
+*: -------------------------发送动作数字: 9
+*: pre send:  2024-04-21 00:42:55.434001
+*: post send:  2024-04-21 00:42:58.981079
+*: 动作执行完成: 9
+*: 返回值: flag: True
+
+执行去往 3 号目标点的导航
+
+执行位于 3 号目标点的讲解
+                                                                                                22222 刚刚进入线程 2024-04-21 00:42:58.982849
+*: -------------------------发送动作数字: 7
+*: pre send:  2024-04-21 00:42:58.984504
+*: post send:  2024-04-21 00:43:01.334887
+*: 动作执行完成: 7
+*: 返回值: flag: True
+                                                                                                44444 循环开始等待 2024-04-21 00:43:01.334968
+                                                                                                55555 等待完毕继续 2024-04-21 00:43:01.334987
+0: 发送文本到喇叭: 在我左手边的是“风云四号”气象卫星模型，
+                                                                                                11111 线程代码之后 2024-04-21 00:43:01.486295
+                                                                                                22222 刚刚进入线程 2024-04-21 00:43:01.486406
+0: -------------------------发送动作数字: 8
+0: pre send:  2024-04-21 00:43:01.487785
+Playing WAVE '/home/kuavo/catkin_dt/src/voice_pkg/temp_record/text2speech/zai_wo_zuo_shou_bian_de_shi__feng_yun_si_hao__qi_xiang_wei_xing_mo_xing__pcm.wav' : Signed 16 bit Little Endian, Rate 16000 Hz, Mono
+                                                                                                33333 睡眠一下之后 2024-04-21 00:43:01.636489
+                                                                                                44444 循环开始等待 2024-04-21 00:43:01.636533
+                                                                                                55555 等待完毕继续 2024-04-21 00:43:01.636551
+Playing WAVE '/home/kuavo/catkin_dt/src/voice_pkg/temp_record/text2speech/feng_yun_si_hao_shi_wo_guo_xin_yi_dai_jing_zhi_gui_dao_ding_liang_yao_gan_qi_xiang_wei_xing__pcm.wav' : Signed 16 bit Little Endian, Rate 16000 Hz, Mono
+1: 发送文本到喇叭: 风云四号是我国新一代静止轨道定量遥感气象卫星。
+1: -------------------------没有动作
+                                                                                                44444 循环开始等待 2024-04-21 00:43:05.792588
+                                                                                                      正在做动作，等待
+0: post send:  2024-04-21 00:43:07.897938
+0: 动作执行完成: 8
+0: 返回值: flag: True
+                                                                                                55555 等待完毕继续 2024-04-21 00:43:07.903166
+Playing WAVE '/home/kuavo/catkin_dt/src/voice_pkg/temp_record/text2speech/wo_xiao_can_yu_wan_cheng_duo_xiang_ji_shu_gong_guan__pcm.wav' : Signed 16 bit Little Endian, Rate 16000 Hz, Mono
+2: 发送文本到喇叭: 我校参与完成多项技术攻关，
+                                                                                                11111 线程代码之后 2024-04-21 00:43:10.557434
+                                                                                                22222 刚刚进入线程 2024-04-21 00:43:10.557456
+2: -------------------------发送动作数字: 25
+2: pre send:  2024-04-21 00:43:10.558747
+                                                                                                33333 睡眠一下之后 2024-04-21 00:43:10.707708
+                                                                                                44444 循环开始等待 2024-04-21 00:43:10.707731
+                                                                                                55555 等待完毕继续 2024-04-21 00:43:10.707736
+ws is closed
+### closed ### 2024-04-21 00:43:12.083296
+-------tts is over----------
+Playing WAVE '/home/kuavo/catkin_dt/src/voice_pkg/temp_record/text2speech/ru_za_san_fu_she_p350_chuan_bo_p350_he__yi_zhi_she_ji_fen_xi__deng__pcm.wav' : Signed 16 bit Little Endian, Rate 16000 Hz, Mono
+3: 发送文本到喇叭: 如杂散辐射，[p350]传播[p350]和 抑制设计分析 等。
+3: -------------------------没有动作
+                                                                                                44444 循环开始等待 2024-04-21 00:43:13.396839
+                                                                                                      正在做动作，等待
+2: post send:  2024-04-21 00:43:19.336124
+2: 动作执行完成: 25
+2: 返回值: flag: True
+                                                                                                55555 等待完毕继续 2024-04-21 00:43:19.351425
+Playing WAVE '/home/kuavo/catkin_dt/src/voice_pkg/temp_record/text2speech/zai_wo_you_shou_bian_de_shi_zhong_guo_bei_dou_dao_hang_wei_xing_zu_wang_mo_xing_bei_dou_wei_xing_dao_hang_xi_tong__pcm.wav' : Signed 16 bit Little Endian, Rate 16000 Hz, Mono
+4: 发送文本到喇叭: 在我右手边的是中国北斗导航卫星组网模型北斗卫星导航系统。
+                                                                                                11111 线程代码之后 2024-04-21 00:43:19.502404
+                                                                                                22222 刚刚进入线程 2024-04-21 00:43:19.502502
+4: -------------------------发送动作数字: 9
+4: pre send:  2024-04-21 00:43:19.503796
+                                                                                                33333 睡眠一下之后 2024-04-21 00:43:19.652626
+                                                                                                44444 循环开始等待 2024-04-21 00:43:19.652655
+                                                                                                      正在做动作，等待
+4: post send:  2024-04-21 00:43:22.915775
+4: 动作执行完成: 9
+4: 返回值: flag: True
+                                                                                                55555 等待完毕继续 2024-04-21 00:43:22.925955
+Playing WAVE '/home/kuavo/catkin_dt/src/voice_pkg/temp_record/text2speech/bei_dou_xi_tong_shi_zhong_guo_zhuo_yan_yu_guo_jia_an_quan_he_jing_ji_she_hui_fa_zhan_xu_yao__pcm.wav' : Signed 16 bit Little Endian, Rate 16000 Hz, Mono
+5: 发送文本到喇叭: 北斗系统是中国着眼于国家安全和经济社会发展需要，
+                                                                                                11111 线程代码之后 2024-04-21 00:43:25.580069
+                                                                                                22222 刚刚进入线程 2024-04-21 00:43:25.580185
+5: -------------------------发送动作数字: 19
+5: pre send:  2024-04-21 00:43:25.581562
+                                                                                                33333 睡眠一下之后 2024-04-21 00:43:25.730246
+                                                                                                44444 循环开始等待 2024-04-21 00:43:25.730276
+                                                                                                55555 等待完毕继续 2024-04-21 00:43:25.730283
+Playing WAVE '/home/kuavo/catkin_dt/src/voice_pkg/temp_record/text2speech/zi_zhu_jian_she__du_li_yun_xing_de_wei_xing_dao_hang_xi_tong__pcm.wav' : Signed 16 bit Little Endian, Rate 16000 Hz, Mono
+6: 发送文本到喇叭: 自主建设、独立运行的卫星导航系统，
+6: -------------------------没有动作
+                                                                                                44444 循环开始等待 2024-04-21 00:43:30.386961
+                                                                                                55555 等待完毕继续 2024-04-21 00:43:30.386977
+5: post send:  2024-04-21 00:43:32.475573
+5: 动作执行完成: 19
+5: 返回值: flag: True
+Playing WAVE '/home/kuavo/catkin_dt/src/voice_pkg/temp_record/text2speech/shi_wei_quan_qiu_yong_hu_ti_gong_quan_tian_hou__quan_tian_shi__gao_jing_du_de_ding_wei__dao_hang_he_shou_shi_fu_wu_de_guo_jia_zhong_yao_kong_jian_ji_chu_she_shi__pcm.wav' : Signed 16 bit Little Endian, Rate 16000 Hz, Mono
+7: 发送文本到喇叭: 是为全球用户提供全天候、全天时、高精度的定位、导航和授时服务的国家重要空间基础设施。
+7: -------------------------没有动作
+                                                                                                44444 循环开始等待 2024-04-21 00:43:34.042116
+                                                                                                55555 等待完毕继续 2024-04-21 00:43:34.042131
+Playing WAVE '/home/kuavo/catkin_dt/src/voice_pkg/temp_record/text2speech/zai_da_jia_de_tou_ding_shang_shi_shi_jie_shou_ke_liang_zi_ke_xue_shi_yan_wei_xing_mo_zi_hao_de_mo_xing__pcm.wav' : Signed 16 bit Little Endian, Rate 16000 Hz, Mono
+8: 发送文本到喇叭: 在大家的头顶上是世界首颗量子科学实验卫星墨子号的模型。
+                                                                                                11111 线程代码之后 2024-04-21 00:43:42.203114
+                                                                                                22222 刚刚进入线程 2024-04-21 00:43:42.203231
+8: -------------------------发送动作数字: 13
+8: pre send:  2024-04-21 00:43:42.204481
+                                                                                                33333 睡眠一下之后 2024-04-21 00:43:42.353327
+                                                                                                44444 循环开始等待 2024-04-21 00:43:42.353356
+                                                                                                      正在做动作，等待
+8: post send:  2024-04-21 00:43:47.515583
+8: 动作执行完成: 13
+8: 返回值: flag: True
+                                                                                                55555 等待完毕继续 2024-04-21 00:43:47.520768
+Playing WAVE '/home/kuavo/catkin_dt/src/voice_pkg/temp_record/text2speech/zai_wo_shen_hou_hai_you_fan_hui_shi_wei_xing__dian_zi_zhen_cha_wei_xing_yi_ji_tan_yue_gong_cheng_de_zhan_pin__pcm.wav' : Signed 16 bit Little Endian, Rate 16000 Hz, Mono
+9: 发送文本到喇叭: 在我身后还有返回式卫星、电子侦查卫星以及探月工程的展品，
+                                                                                                11111 线程代码之后 2024-04-21 00:43:47.671886
+                                                                                                22222 刚刚进入线程 2024-04-21 00:43:47.671926
+9: -------------------------发送动作数字: 20
+9: pre send:  2024-04-21 00:43:47.673124
+                                                                                                33333 睡眠一下之后 2024-04-21 00:43:47.822161
+                                                                                                44444 循环开始等待 2024-04-21 00:43:47.822190
+                                                                                                55555 等待完毕继续 2024-04-21 00:43:47.822195
+Playing WAVE '/home/kuavo/catkin_dt/src/voice_pkg/temp_record/text2speech/jie_xia_lai_you_wo_de_ren_lei_jiang_jie_yuan_tong_shi_wei_nin_jiang_jie__pcm.wav' : Signed 16 bit Little Endian, Rate 16000 Hz, Mono
+9: post send:  2024-04-21 00:43:52.858073
+9: 动作执行完成: 20
+9: 返回值: flag: True
+10: 发送文本到喇叭: 接下来由我的人类讲解员同事为您讲解，
+10: -------------------------没有动作
+                                                                                                44444 循环开始等待 2024-04-21 00:43:52.978649
+                                                                                                55555 等待完毕继续 2024-04-21 00:43:52.978665
+Playing WAVE '/home/kuavo/catkin_dt/src/voice_pkg/temp_record/text2speech/zhu_nin_zai_ha_gong_da_hang_tian_guan_you_suo_shou_huo__pcm.wav' : Signed 16 bit Little Endian, Rate 16000 Hz, Mono
+11: 发送文本到喇叭: 祝您在哈工大航天馆有所收获。
+11: -------------------------没有动作
+                                                                                                44444 循环开始等待 2024-04-21 00:43:56.632807
+                                                                                                55555 等待完毕继续 2024-04-21 00:43:56.632843
+Playing WAVE '/home/kuavo/catkin_dt/src/voice_pkg/temp_record/text2speech/qi_dai_yu_nin_xia_ci_zai_jian__pcm.wav' : Signed 16 bit Little Endian, Rate 16000 Hz, Mono
+12: 发送文本到喇叭: 期待与您下次再见。
+                                                                                                11111 线程代码之后 2024-04-21 00:43:59.787747
+                                                                                                22222 刚刚进入线程 2024-04-21 00:43:59.787862
+12: -------------------------发送动作数字: 0
+12: pre send:  2024-04-21 00:43:59.789494
+                                                                                                33333 睡眠一下之后 2024-04-21 00:43:59.937994
+
+if_success_explain:  True
+任务结束

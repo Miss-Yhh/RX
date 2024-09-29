@@ -1,0 +1,1 @@
+from .task_cls import analyze_text

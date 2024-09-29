@@ -151,8 +151,6 @@ def kedaxunfei_iat_service():
 						ws.close()
 						return
 
-
-
 		# 收到websocket错误的处理
 		def on_error(ws, error):
 				print("### error:", error, datetime.now())

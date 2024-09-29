@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 # ===========================================================
 # 旧的 tts.py
 # 新的3090本地在/home/ps/RX_hsong/RX/test_host_3090_tts.py
@@ -17,6 +18,29 @@ from datetime import datetime
 from time import mktime
 import _thread as thread
 import os
+import subprocess
+import wave
+import websocket
+import datetime
+import hashlib
+import base64
+import hmac
+import json
+from urllib.parse import urlencode
+import time
+import ssl
+from wsgiref.handlers import format_date_time
+from datetime import datetime
+from time import mktime
+import _thread as thread
+import os
+import sys
+
+from pydub.playback import play
+from pydub import AudioSegment
+
+import rospy
+import pypinyin
 
 
 STATUS_FIRST_FRAME = 0
@@ -137,9 +161,10 @@ def get_tts(text_input, save_path):
 
 if __name__ == "__main__":
     # p = f"{role}_action_over.mp3"
-    root_dir = "./test_mp3/"
+    #root_dir = "./test_mp3/"
 
-    get_tts("请说", f"tmp_{role}_please_say.mp3")
+    #get_tts("请说", f"tmp_{role}_please_say.mp3")
+
     # get_tts("还有什么我可以帮忙的", f"{role}_finish_instruction.mp3")
     # get_tts("很抱歉，我没有听清你说什么", f"{role}_record_nothing_beep.mp3")
     # get_tts("请让我思考一下", f"{role}_begin_qa.mp3")
@@ -153,3 +178,17 @@ if __name__ == "__main__":
     # get_tts("我是哈尔滨工业大学研制的智能人形机器人助理，灵博机器人。我来自哈尔滨工业大学机电工程学院机器人技术与系统国家重点实验室。下面由我为您介绍一下哈恰会。", "temp_intro.mp3")
     # get_tts("欢迎来到哈洽会，我是灵博机器人，我来自哈尔滨工业大学机器人技术与系统全国重点实验室，很高兴为您服务。", "introduce.mp3")
     #print("Done.Saved in ",p)
+    text = sys.argv[1]
+    savepath = sys.argv[2]
+    
+    # 处理多音字等特殊情况
+    # with open('/home/robot/catkin_dt/src/voice_pkg/scripts/kedaxunfei_tts/duoyin.json', 'r+', encoding='utf-8') as fj:
+    #     jsondata = json.load(fj)
+    
+    # for k, v in jsondata.items():
+    #     if k in text:
+    #         text = text.replace(k, jsondata[k])
+
+    # 调用 TTS 功能并播放生成的音频
+    get_tts(text, savepath)
+
