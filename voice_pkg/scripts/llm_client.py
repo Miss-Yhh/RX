@@ -49,5 +49,5 @@ class OpenAiBuilder:
     
 username = "陈一帆"
 builder = OpenAiBuilder("https://huozi.8wss.com")
-builder.login(username, password="123456")
+builder.login(username, password="hit-scir-dt-chenyifan-huozi-api")
 client = builder.build()
