@@ -1,1 +1,0 @@
-from .ppl_mydata import get_ppl_for

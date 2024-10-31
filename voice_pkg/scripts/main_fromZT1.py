@@ -249,8 +249,33 @@ class InterruptClass:
         task = '问答意图'
         clear = True # 是否清楚展品名称、是否正确理解了用户的问题
         while True:
+            STATUS.set_is_Interrupted(False)#表示目前没有新的打断状态
+                    
+            self.qa_class.interrupt_stream = True#问答流可以正常进行
+            print('------task 录制开始时间=', datetime.now())
+
+            question = pardon() # 录制用户的指令
+            print('------task 录制结束时间=', datetime.now())
+            if '再见' in question or '拜拜' in question:
+                    
+                play_sound('/home/hit/RX/save_waves/byebye.mp3')
+                is_wake=False
+                #thread.start_new_thread(play_sound, ("/home/hit/RX/save_waves/byebye.mp3",))  #再见，期待下次和您交流
+                return 0
+            elif '系统关机' in question:
+                exit(0)
+                
+                # print(f"\n用户指令: {question}\n")
+                
+                # 使用任务分类大模型
+                #task_result = get_task_type(text=question,model=STATUS.MODEL_TASK_TYPE)  
+            print('------task 任务判断开始时间=', datetime.now())
+            task = intention_detect(question)
+                # 任务分类，两个变量分别为用户的提问和指定用于任务分类的语言模型类型
+                #task = task_class_result_replace(task_result)#替换当前的task
+                #record_task_classification(question, task)#记录下来
+            print('------task 任务判断结束时间=', datetime.now())
             # 一直进行问答，直到task不是QA，转而进行其他操作
-            while "动作" not in task:
                   
                 # if clear and self.qa_class.interrupt_stream:#问答流正常
                 #     #定向指定了一个提示音的路径：大家有什么问题嘛
@@ -266,36 +291,45 @@ class InterruptClass:
                 #         print(f"播放我在之前STATUS.is_Interrupted:{STATUS.is_Interrupted}")
                 #         text2speech('我在', index=0, is_beep=True, wavfile=iamhere, ignore_interrupt=True) # 提示用户说出问题
                 
-                STATUS.set_is_Interrupted(False)#表示目前没有新的打断状态
+                # STATUS.set_is_Interrupted(False)#表示目前没有新的打断状态
                     
-                self.qa_class.interrupt_stream = True#问答流可以正常进行
-                print('------task 录制开始时间=', datetime.now())
+                # self.qa_class.interrupt_stream = True#问答流可以正常进行
+                # print('------task 录制开始时间=', datetime.now())
 
-                question = pardon() # 录制用户的指令
-                print('------task 录制加速时间=', datetime.now())
-                # print(f"\n用户指令: {question}\n")
+                # question = pardon() # 录制用户的指令
+                # print('------task 录制结束时间=', datetime.now())
+                # if '再见' in question or '拜拜' in question:
+                    
+                #     play_sound('/home/hit/RX/save_waves/byebye.mp3')
+                #     is_wake=False
+                #     #thread.start_new_thread(play_sound, ("/home/hit/RX/save_waves/byebye.mp3",))  #再见，期待下次和您交流
+                #     return
+                # elif '系统关机' in question:
+                #     exit(0)
                 
-                # 使用任务分类大模型
-                #task_result = get_task_type(text=question,model=STATUS.MODEL_TASK_TYPE)  
-                print('------task 任务判断开始时间=', datetime.now())
-                task = intention_detect(question)
-                # 任务分类，两个变量分别为用户的提问和指定用于任务分类的语言模型类型
-                #task = task_class_result_replace(task_result)#替换当前的task
-                #record_task_classification(question, task)#记录下来
-                print('------task 任务判断结束时间=', datetime.now())
-                if "动作" not in task:
-                    if clear: # 如果清楚展品名称，就直接回答
-                        STATUS.set_is_QAing(False) # 防止问答被打断 - 结束
+                # # print(f"\n用户指令: {question}\n")
+                
+                # # 使用任务分类大模型
+                # #task_result = get_task_type(text=question,model=STATUS.MODEL_TASK_TYPE)  
+                # print('------task 任务判断开始时间=', datetime.now())
+                # task = intention_detect(question)
+                # # 任务分类，两个变量分别为用户的提问和指定用于任务分类的语言模型类型
+                # #task = task_class_result_replace(task_result)#替换当前的task
+                # #record_task_classification(question, task)#记录下来
+                # print('------task 任务判断结束时间=', datetime.now())
+            if "动作" not in task:
+                if clear: # 如果清楚展品名称，就直接回答
+                    STATUS.set_is_QAing(False) # 防止问答被打断 - 结束
 
-                        self.qa_class.answer_question(question) # 生成答案并播音
-                        STATUS.set_is_QAing(True) # 防止问答被打断 - 开始
-                    else:
-                        text2speech('大家还有其他问题吗？', index=1000, is_beep=True)
+                    self.qa_class.answer_question(question) # 生成答案并播音
+                    STATUS.set_is_QAing(True) # 防止问答被打断 - 开始
+                else:
+                    text2speech('大家还有其他问题吗？', index=1000, is_beep=True)
 
 
             if '动作' in task:
                 STATUS.set_is_QAing(False) # 防止问答被打断 - 结束
-                cnt = 20
+                cnt = 2
                 while cnt>0:
                     print(f"模拟执行动作过程ing......{cnt}")
                     cnt -= 1
@@ -558,11 +592,6 @@ class MainClass:
             self.main()
             
 
-
-            
-
-
-
     def get_card_index_by_keyword(self, keyword):
         result = subprocess.run(['arecord', '-l'], capture_output=True, text=True)
         if result.returncode != 0:
@@ -682,11 +711,18 @@ class MainClass:
         if if_start == 'start':
             print("开始")
 
+
         while True:
-            # 如果开启问答功能，且讲解成功并且没有额外导航点，则进入问答环节
-            if STATUS.Enable_QA and if_success_explain and not self.find_next_destination(current_destination):
-                print(f"\n执行问答\n")
-                self.start.handle_interrupt()
+            if is_wake:
+                # 如果开启问答功能，且讲解成功并且没有额外导航点，则进入问答环节
+                if STATUS.Enable_QA :
+                    #print(f"\n执行问答\n")
+                    self.start.handle_interrupt()
+                    thread.start_new_thread(run_interrupt_thread, ())
+
+            else:
+                print('休眠')
+                thread.start_new_thread(run_interrupt_thread, ())
         
         text2speech("参观到此结束，欢迎再来哈工大找我玩。", index=1000)
         print("任务结束")
