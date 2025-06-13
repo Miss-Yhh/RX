@@ -19,8 +19,8 @@ def play_sound(wav_path: str):
 
 if __name__ == "__main__":
     # p = f"{role}_action_over.mp3"
-    savepath = sys.argv[1]
-    
+    #savepath = sys.argv[1]
+    savepath = '/home/niic/RX/voice_pkg/scripts/好的.wav'
     # 处理多音字等特殊情况
     # with open('/home/robot/catkin_dt/src/voice_pkg/scripts/kedaxunfei_tts/duoyin.json', 'r+', encoding='utf-8') as fj:
     #     jsondata = json.load(fj)
