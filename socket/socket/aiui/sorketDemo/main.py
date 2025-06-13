@@ -47,7 +47,7 @@ logger.addHandler(console_handler)
 class SocketDemo:
     def __init__(self):
         self.client_socket = None
-        self.server_ip_port = ('192.168.21.166', 19199)
+        self.server_ip_port = ('192.168.21.246', 19199)
         self.server_ip = self.server_ip_port[0]
         self.connected_event = Event()
         self.stop_event = Event()
