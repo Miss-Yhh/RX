@@ -51,7 +51,8 @@ def text2speech(text='', index=0, is_beep=False, wavfile=None, ignore_interrupt=
 
     savepath = os.path.join('/home/kuavo/catkin_dt/src/voice_pkg/temp_record/text2speech', str(time.time())+'.wav')
     if not wavfile:
-        ttsproc = subprocess.Popen(["python3", "/home/kuavo/catkin_dt/src/voice_pkg/scripts/kedaxunfei_tts/test_host_3090_tts.py", text, savepath])
+        ttsproc = subprocess.Popen(["python3", "/home/hit/RX/voice_pkg/scripts/tts.py", text, savepath])
+        # ttsproc = subprocess.Popen(["python3", "/home/kuavo/catkin_dt/src/voice_pkg/scripts/kedaxunfei_tts/test_host_3090_tts.py", text, savepath])
         while ttsproc.poll() is None:
             # print(f'tts process is working, interrupted:--{STATUS.is_Interrupted}--, 时间: {datetime.now()}, 本句是:{text}')
             
@@ -1602,6 +1603,7 @@ class MainClass:
         self.main()
         
     def main(self, ):
+        text2speech("你好，我是灵博。", index=1000)
         # 先进行问答交互，直到游客要求参观整个展厅才开始主流程
         if_start = self.start.handle_interrupt()
         

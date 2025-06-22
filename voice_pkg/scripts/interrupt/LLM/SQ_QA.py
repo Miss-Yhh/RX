@@ -19,13 +19,13 @@ from transformers import AutoTokenizer, AutoModel
 #from langchain.embeddings.huggingface import HuggingFaceEmbeddings
 #from langchain.text_splitter import RecursiveCharacterTextSplitter
 
-#from .testgpt4 import gpt_stream, gpt_direct
-#from .testglm import glm_stream, glm_direct
+from .testgpt4 import gpt_stream, gpt_direct
+from .testglm import glm_stream, glm_direct
 from .testhuozi import huozi_stream, huozi_direct
 #from .testabab import abab_stream, abab_direct
 #from .testerine import ernie_direct
-#from .testds import get_dk_stream,get_dk_direct
-#from .testqwen import qwen_direct_once, qwen_stream_once
+# from .testds import get_dk_stream,get_dk_direct
+from .testqwen import qwen_direct_once, qwen_stream_once
 
 """
 忽略以下警告：
@@ -37,8 +37,8 @@ To disable this warning, you can either:
 import os
 os.environ["TOKENIZERS_PARALLELISM"] = "false"
 
-uri = "ws://192.168.31.90:10087"
-ws = websocket.WebSocket() 
+# uri = "ws://192.168.31.90:10087"
+# ws = websocket.WebSocket() 
 #ws.connect(uri)
 
 from .SQ_Search import Searchscr
@@ -95,7 +95,7 @@ class DocumentQA:
 		self.old_question = ""				# 记录上一次的问题
 		self.old_complete_answer = ""		# 记录上一次的回答
 			
-		self.searchwmj = Searchscr()
+		# self.searchwmj = Searchscr()
 
 		if self.model == 'huozi':
 			username = "陈一帆"
@@ -115,7 +115,8 @@ class DocumentQA:
 			#document = self.searchwmj.get_bge_query(query,ans)
 			time_search_document_1 = time.time()
 			# document = self.searchwmj.get_bge_query_wmj(query)
-			document = self.searchwmj.get_bge_query_scr(query)
+			document = ""
+			# document = self.searchwmj.get_bge_query_scr(query)
 			time_search_document_2 = time.time()
 			#print(f"检索文档的时间：{time_search_document_2-time_search_document_1}", datetime.now())
 			#print(f'检索文档长度=', len(document))
@@ -220,7 +221,7 @@ class DocumentQA:
 	def task_class_and_generate_response(self, document, query):
 		# system_prompt = "你是赛尔实验室和哈工大机器人实验室共同研发的导游机器人，你的名字是小红。现在在哈尔滨工业大学（简称哈工大）科创大厦的全国重点机器人实验室展厅，你的主线任务是按照预定好的目标带游客按顺序参观航天馆的所有展厅，包括服务及医疗机器人展区、宇航空间机构及控制展区、空间机器人展区、服务及医疗机器人展区、宇航空间机构及控制展区、工业及特种机器人展区、空间机器人展区、机器人基础功能部件展区、微纳及仿生机器人展区、实验室概况展区、实验室队伍展区、实验室宣传视频展区、未来展望展区、开放服务展区、领导关怀及荣誉展区，同时游客可能随时打断你，你需要对游客的意图进行识别并分类。当你识别到游客明确想要参观某个展厅时，比如游客说“带我参观医疗机器人展区吧”或“我想看看空间在轨服务机器人”、“没有问题了，继续参观下一个展厅吧”或“我想看看之前的展厅”，你需要将任务分类到“参观”，进而终止当前的主线任务，导航到游客指定的展厅，并输出“参观 医疗机器人展区”或“参观 空间机器人展区”或“参观 上一个”或“参观 下一个”; 当你识别到游客想要打断你正在执行的任务时，比如“不要再继续讲解了”或“可以了，停下吧”或“原地休眠”，你需要将任务分类到“休眠”，进而停止你所有正在执行的任务，进入等待状态，并输出“休眠”；，注意！只有游客想让机器人休眠的意图很明显时才分类为休眠当你识别到游客想让你继续主线任务时，比如“没有了”或“我没有问题了，继续吧”或“继续参观吧”，你需要将任务分类到继续，从而继续执行主线任务，并输出“继续”。他们现在对你发出指令，你需要先对他们的指令进行分类，如果指令类别不是问答，那你就根据指令类别输出相应的回答，无论有没有参考文本，都请严格遵守以上的输出限制，不要输出额外的内容。如果指令类别是问答，你需要根据参考文本回答所有关于机器人和该实验室相关的问题。参考文本上没有的信息尽量不要自行补充（但可以适当精简）。必要的时候回答你不能确定。你的回答要简洁，不能超过50个字。"
 
-		config_path = "/home/kuavo/catkin_dt/src/voice_pkg/scripts/config/prompt_config.yaml"
+		config_path = "/home/niic/RX//voice_pkg/scripts/config/prompt_config.yaml"
 		with open(config_path, 'r', encoding='utf-8') as file:
 			config = yaml.safe_load(file)
 
@@ -414,7 +415,7 @@ class DocumentQA:
 	def task_class_post_process(self, query):
 		system_prompt = "你是赛尔实验室和哈工大机器人实验室共同研发的导游机器人，你的名字是小红。现在在哈尔滨工业大学（简称哈工大）科创大厦的全国重点机器人实验室展厅。"
 
-		config_path = "/home/kuavo/catkin_dt/src/voice_pkg/scripts/config/prompt_config.yaml"
+		config_path = "/home/niic/RX//voice_pkg/scripts/config/prompt_config.yaml"
 		with open(config_path, 'r', encoding='utf-8') as file:
 			config = yaml.safe_load(file)
 

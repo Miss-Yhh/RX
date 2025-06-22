@@ -3,7 +3,7 @@ from pydub import AudioSegment
 from pydub.playback import play
 import subprocess
 from multiprocessing import Process
-
+import sys
 def get_audio_length(file_path:str):
     audio = AudioSegment.from_file(file_path)
     length_ms = len(audio)
@@ -160,4 +160,5 @@ def get_mic_from_audio(savepath):
 if __name__ == "__main__":
     # wav_to_mp3("please_say.wav", "please_say.mp3")
     # wav_to_mp3("finish_instruction.wav", "finish_instruction.mp3")
-    play_sound("/home/hit/RX/save_waves/finish_instruction.mp3")
+    wav_path = sys.argv[1]
+    play_sound(wav_path)

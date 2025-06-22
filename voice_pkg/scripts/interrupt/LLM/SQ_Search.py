@@ -12,7 +12,6 @@ from openai import OpenAI, AsyncOpenAI
 import time
 
 import asyncio
-import websockets
 import websocket
 import torch
 import jieba.posseg as pseg
@@ -45,9 +44,9 @@ os.environ["TOKENIZERS_PARALLELISM"] = "false"
 os.environ["http_proxy"] = "http://localhost:7890"
 os.environ["https_proxy"] = "http://localhost:7890"
 """openai.APIConnectionError: Connection error"""
-uri = "ws://192.168.31.90:10087"
-ws = websocket.WebSocket() 
-ws.connect(uri)
+# uri = "ws://192.168.31.90:10087"
+# ws = websocket.WebSocket() 
+# ws.connect(uri)
 
 # class Searchwmj:
 # 	def __init__(self) -> None:
@@ -129,20 +128,20 @@ def get_query_embedding(encoded_input):
 
 class Searchscr:
 	def __init__(self) -> None:
-		csv_file_path = '/home/kuavo/catkin_dt/src/voice_pkg/scripts/qa_legacy/qa_data/documents_lecture_all-v4.csv'
+		csv_file_path = '/home/niic/RX/voice_pkg/scripts/qa_legacy/qa_data/documents_lecture_all-v4.csv'
 		self.locs={'飞行器相关物品展示':1,'航天相关物品展示':1,'机器人相关物品展示':1,'老师个人介绍':1,'实验室相关内容':1,'专业名词解释':1,'工业及特种机器人':1,'特种机器人':1,'工业机器人':1,'宇航空间机构及控制':1,'空间机器人':1,'仿生机器人':1,'实验室研究方向':1,'实验室概述':1,'研究团队':1,'开放服务':1,'捣炉机器人系统':1, '展区介绍':1,'小型娱乐机器人':1}
 		df = pd.read_csv(csv_file_path)
 		column0 = df['aaa分类'].tolist()
 		column1 = df['关键词'].tolist()
 		column2 = df['描述内容'].tolist()
-		df2=pd.read_csv("/home/kuavo/catkin_dt/src/voice_pkg/scripts/qa_legacy/qa_data/example.csv")
+		df2=pd.read_csv("/home/niic/RX/voice_pkg/scripts/qa_legacy/qa_data/example.csv")
 		column0_2 = df2['关键词'].tolist()
 		column1_2 = df2['描述内容'].tolist()
 		self.jsondata_2={'关键词':column0_2, '描述内容':column1_2}
 		
 		self.jsonalldata={'分类': column0, '关键词':column1, '描述内容':column2}
 		self.jsondata={'关键词':[], '描述内容':[]}
-		self.tokenizer = AutoTokenizer.from_pretrained('/home/robot/.cache/huggingface/hub/models--infgrad--stella-large-zh-v3-1792d/snapshots/d5d39eb8cd11c80a63df53314e59997074469f09')
+		self.tokenizer = AutoTokenizer.from_pretrained('/home/niic/.cache/modelscope/hub/models/AI-ModelScope/stella-large-zh-v2')
 		# self.model = AutoModel.from_pretrained("/home/robot/.cache/huggingface/hub/models--infgrad--stella-large-zh-v3-1792d/snapshots/d5d39eb8cd11c80a63df53314e59997074469f09")
 		# self.model.eval()
 		self.get_jsons()
@@ -544,7 +543,7 @@ if __name__ == "__main__":
 if __name__ == "__main____":
 	query1 = '你好'
 	query2 = '你不好'
-	tokenizer = AutoTokenizer.from_pretrained('/home/robot/.cache/huggingface/hub/models--infgrad--stella-large-zh-v3-1792d/snapshots/d5d39eb8cd11c80a63df53314e59997074469f09')
+	tokenizer = AutoTokenizer.from_pretrained('/home/niic/.cache/modelscope/hub/models/AI-ModelScope/stella-large-zh-v2')
 	encoded_input1 = tokenizer([query1], max_length=512, padding=True, truncation=True, return_tensors='pt')
 	encoded_input2 = tokenizer([query2], max_length=512, padding=True, truncation=True, return_tensors='pt')
 
