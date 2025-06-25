@@ -47,7 +47,11 @@ logger.addHandler(console_handler)
 class SocketDemo:
     def __init__(self):
         self.client_socket = None
+<<<<<<< HEAD
         self.server_ip_port = ('192.168.1.104', 19199)
+=======
+        self.server_ip_port = ('192.168.21.166', 19199)
+>>>>>>> 567c568... Add files via upload
         self.server_ip = self.server_ip_port[0]
         self.connected_event = Event()
         self.stop_event = Event()
